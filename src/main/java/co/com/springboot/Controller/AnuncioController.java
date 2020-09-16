@@ -56,23 +56,11 @@ public class AnuncioController {
 	
 
 
-	
-
-	
-
 	@GetMapping("/user/anuncio")
 	   public String anuncioForm(Anuncio anuncio,Model model) {
 			model.addAttribute("subcategorias", subCatRepo.findAll() );
-			model.addAttribute("usuarios", usuarioRepo.findAll() );
-	       return "anuncio/add-anuncio";
-	  }
-	
-	@GetMapping("/user/anuncio2")
-	   public String anuncioForm2(Anuncio anuncio,Model model) {
-
-			model.addAttribute("subcategorias", subCatRepo.findAll() );
-			model.addAttribute("usuarios", usuarioRepo.findAll() );
-	       return "anuncio/update-anuncio";
+			
+	       return "Anuncio/add-anuncio";
 	  }
 	
 	
@@ -83,7 +71,7 @@ public class AnuncioController {
 			model.addAttribute("subcategorias", subCatRepo.findAll() );
 			
 			model.addAttribute("anuncio", anuncio);
-			return "anuncio/indexAnuncioChat";
+			return "Anuncio/indexAnuncioChat";
 		}
 
 	
@@ -106,7 +94,7 @@ public class AnuncioController {
 	    	model.addAttribute("subcategorias", subCatRepo.findAll() );
 	    	model.addAttribute("usuarios", usuarioRepo.findAll() );
 
-	    	return "anuncio/add-anuncio";
+	    	return "Anuncio/add-anuncio";
 	     }
 	  
 	    /**UserDetails user = (UserDetails) authenticationUser.getAuthentication();
@@ -133,7 +121,7 @@ public class AnuncioController {
 		model.addAttribute("subcategorias", subCatRepo.findAll() );
 		
 		model.addAttribute("anuncio", anuncio);
-		return "anuncio/update-anuncio";
+		return "Anuncio/update-anuncio";
 	}
 	
 	
@@ -144,7 +132,7 @@ public class AnuncioController {
 	        	anuncio.setIdAnuncio(id);
 	         	model.addAttribute("subcategorias", subCatRepo.findAll() );
 
-	         	return "anuncio/update-anuncio";
+	         	return "Anuncio/update-anuncio";
 	        }
 	        
 	        try {

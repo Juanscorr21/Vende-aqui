@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <div th:replace="fragment/Frames combo :: myheader"></div>
+   <link rel="stylesheet" type="text/css" href="static/css/stylesFormularios.css"
+        th:href="@{/css/stylesFormularios.css}">
+</head>
+<body>
+
+<div th:insert="fragment/Frames combo  :: menu"></div>
+   
+  <div class="container  col-sm-12 col-md-12 col-lg-8  contenedor" style="margin-top: 3rem;" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+
+        <div class="text-center" id="menu">
+               <h2  style="padding-top: 3%;color:#1c89d1;font-size: 50px">Actualizar Subcategoria
+               </h2>
+               <hr style="background-color:rgba(39, 144, 170, 0.822); height: 3px; margin-top: 15;margin-bottom: 5%;">
+           </div>
+
+
+        <form action="#" th:action="@{/admin/actualizarSub/{idSubcategoria}(idSubcategoria=${subcategoria.idSubcategoria})}" th:object="${subcategoria}" method="post">
+
+            <div class="text-left inputs-bg" id="user-group">
+                <label for="nombre" style="font-size: 20px;margin-left: 2%;">Seleccione Categoria: </label>
+                <div class="input-group  ">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="icono-categoria"><i class="fas fa-tags"></i></span>
+                    </div>
+                    <select class="form-control" id="select" th:field="*{categoria}" >
+                       <option th:each="categoria : ${categorias}" th:value="${categoria.idCategoria}" th:text="${categoria.nombre}"></option>
+                       		
+                    </select>
+                </div>               
+            </div>
+
+            <div class="text-left inputs-bg" id="user-group">
+                <label for="nombre" style="font-size: 20px;margin-left: 2%;margin-top: 3%;">Nombre Subcategoria: </label>
+                <div class="input-group  ">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="icono-categoria"><i class="fas fa-tags"></i></span>
+                    </div>
+                    <input type="text" class="form-control" th:field="*{nombre}" id="nombre"
+                        placeholder="Ingrese Subcategoria" required="required">
+                </div>
+                <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
+           	 	<div th:if="${subcategoriaExistente}" th:text="${subcategoriaExistente}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
+            </div>
+
+                    <div class="text-center button2">                  
+                    <a href="/admin/listaSubcategoria" class="btn btn-danger" id="button-forms"> <i
+                        class="far fa-times-circle"></i> Cancelar</a>
+                        <button type="submit" class="btn btn-success">Actualizar <i class="far fa-check-circle"></i></button>
+                    </div>
+
+        </form>
+
+        </div>
+
+<div th:insert="fragment/Frames combo :: foot"></div>
+</body>
+</html>

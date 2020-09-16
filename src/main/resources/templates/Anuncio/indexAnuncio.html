@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+   <div th:replace="fragment/Frames combo :: myheader"></div>
+ 	<link rel="stylesheet" type="text/css" href="static/css/stylesList.css" th:href="@{/css/stylesList.css}">
+</head>
+<body>
+    <div th:insert="fragment/Frames combo  :: menu"></div>
+   
+   
+   
+
+	
+    <div class="container col-12 col-lg-9" th:if="${anuncios.isEmpty()}" style="margin-top:7%">
+        <div class="card container-error" >
+            <div class="card-body text-center" >
+                <h2 style="font-size: 68px;font-family: 'Fredoka One', cursive;color:#1c89d1;margin: 2%;">No Hay Anuncios Publicados</h2>
+
+                <div class="text-center">
+                    <a href="/user/anuncio" class="btn btn-outline-success">Publicar Anuncio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+
+	<div th:if="${!anuncios.isEmpty()}">
+  <h1 class="text-center" style="background: #6bc82d;color: #ffffff;margin-top: 1%;">Mis Anuncios</h1>
+
+
+    <div class="col-12" style="margin-top: 1%;">
+        <div class="card-columns row-cols-1 row-cols-md-1 row-cols-lg-1">
+            <div class="card container-anuncio " th:each="anuncio : ${anuncios}" style="margin-top: 10px;">
+
+               <div class="img-box" id="foto2">
+               <img th:src="${anuncio.urlFoto}" class="card-img-top"
+                    style="margin-bottom: 3%;border-top-left-radius: 15px;border-top-right-radius: 15px;">
+				</div>
+
+                <div class="col-12">
+                    <div class="card-body">
+                        <h1 class="card-title" th:text="${anuncio.titulo}" ></h1>
+                        <div class="row">
+                            <span><i class="fas fa-dollar-sign"
+                                    style="font-size: 22px;margin-left: 12px;margin-right: 8px;margin-top: 2px;"></i></span>
+                            <h4 class="card-title" th:text="${anuncio.precio}"></h4>
+                        </div>
+                    </div>
+
+                    <p class="card-text" th:text="${anuncio.descripcion}"></p>
+
+
+                    <div class="row">
+                        <div class="text-right col-2">
+                            <a th:href="@{/user/editanuncio/{idAnuncio}(idAnuncio=${anuncio.idAnuncio})}"><i
+                                    class="fas fa-pencil-alt" id="icon-list2"></i></a>
+                        </div>
+                        <div class="text-right col-9">
+                            <a th:href="@{/user/eliminarAnuncio/{idAnuncio}(idAnuncio=${anuncio.idAnuncio})}"><i
+                                    class="far fa-trash-alt" id="icon-list"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+           
+        </div>
+    </div>
+   </div>
+  <div th:insert="fragment/Frames combo :: foot"></div>
+   <script src="static/js/subirImagen.js" th:src="@{/js/subirImagen.js}"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <div th:replace="fragment/Frames combo :: myheader"></div>
+  <link rel="stylesheet" type="text/css" href="static/css/stylesFormularios.css"
+        th:href="@{/css/stylesFormularios.css}">
+</head>
+<body>
+
+<div th:insert="fragment/Frames combo  :: menu"></div>
+ 
+ 
+  <div class="container  col-sm-12 col-md-12 col-lg-8 contenedor"  style="margin-top: 3rem;"> 
+  
+        <div class="text-center" id="menu">
+               <h2  style="padding-top: 3%;color:#1c89d1;font-size: 45px">Registrar Departamento
+               </h2>
+               <hr style="background-color:rgba(39, 144, 170, 0.822); height: 3px; margin-top: 15;margin-bottom: 5%;">
+         </div>
+        
+        <form action="#" th:action="@{/departamento/agregarDept}" th:object="${departamento}" method="post">
+    
+          <div class="text-left inputs-bg" id="user-group">
+                <label for="nombre" style="font-size: 20px;margin-left: 2%;">Seleccione Pais: </label>
+                <div class="input-group  ">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="icono-categoria"><i class="fas fa-map-marker-alt"></i></span>
+                    </div>
+                    <select class="form-control" id="select" th:field="*{pais}" required  oninvalid="setCustomValidity('Cree Un Pais Antes, Para Poder  Crear Un Departamento')" >
+                       <option th:each="pais : ${paises}" th:value ="${pais.idPais}" th:text="${pais.nombre}"></option>	
+                    </select>
+                  
+                </div>
+            </div>
+ 			<div class="text-left inputs-bg" id="user-group">
+                <label for="nombre" style="font-size: 20px;margin-left: 2%;margin-top: 3%;">Nombre Departamento: </label>
+                <div class="input-group  ">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="icono-categoria"><i class="fas fa-map-marker-alt"></i></span>
+                    </div>
+                    <input type="text" class="form-control" th:field="*{nombre}" id="nombre"  placeholder="Ingrese Nombre" required="required">
+                </div>
+                <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
+            </div>
+
+            <div class="text-center button2">                  
+                    <button type="submit" class="btn btn-success">Agregar <i class="far fa-check-circle"></i></button>
+            </div>
+        </form>
+  </div>
+  
+    <div th:insert="fragment/Frames combo :: foot"></div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!-- framentos con  el menu Admin de la plataforma-->    
+<div th:fragment="menu">
+
+ <div class="wrapper " style="padding: 0%;">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div id="dismiss">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+
+            <div class="text text-center">
+                <a href="/">Menu</a></div>
+
+
+            <nav class="navbar navbar-light bg-light" style="margin-bottom: 1%;">
+                <a class="navbar-brand"></a>
+                <form class="form-inline">
+                    <input class="form-control mr-sm-1 " type="search" placeholder="Buscar" aria-label="Search"
+                        style="width: 285px;margin-left: -1%;">
+                    <button class="btn btn-outline-primary " type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </nav>
+
+            <ul class="list-unstyled components" style="margin-top:2rem">
+
+
+				<li sec:authorize="!isAuthenticated()" style="margin-top: 15%">
+                </li>
+                
+                <li style="text-align: center;margin-top: -8%;margin-bottom: 5%" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                    <a >   
+                    <i class="fas fa-user-secret"></i>  Bienvenido <span  sec:authentication="name"></span> </a>
+                </li>
+	
+                <li>
+                    <a href="/">
+                        <i class="fas fa-home"></i>
+                        Explorar</a>
+                </li>	
+                <li sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
+                
+                
+
+                    <a href="#menuPerfil" data-toggle="collapse" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                        Perfil</a>
+                    <ul class="collapse list-unstyled" id="menuPerfil">
+                        <li>
+                            <a href="/inicioUser">Mi Perfil</a>
+                        </li>
+                        <li sec:authorize="isAuthenticated()">
+                            <a href="/user/ListAnuncio">Mis Anuncios</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                    <a href="#menuCategorias" data-toggle="collapse" aria-expanded="false">
+                        <i class="fas fa-tags"></i>
+                        Gestionar Categorias</a>
+
+                    <ul class="collapse list-unstyled" id="menuCategorias">
+                        <li>
+
+                            <a href="#categorias1" data-toggle="collapse" aria-expanded="false" id="categorias2">
+                                <i class="fas fa-tag"></i>
+                                Categorias</a>
+                            <ul class="collapse list-unstyled" id="categorias1">
+                            	<li>
+                                    <a href="/admin/c">Lista Categorias</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/admin/registroCategoria}">Agregar Categoria</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+
+                            <a href="#Subcategorias" data-toggle="collapse" aria-expanded="false" id="categorias2">
+                                <i class="fas fa-tag"></i>
+                                Subcategorias</a>
+                            <ul class="collapse list-unstyled" id="Subcategorias">
+                            	<li>
+                                    <a href="/admin/listaSubcategoria">Lista Subcategorias</a>
+                                </li>
+                                <li>
+                                    <a  th:href="@{/admin/registroSubcategoria}">Agregar Subcategoria</a>
+                                </li>
+     
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+ 				<li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                    <a href="#menuPais" data-toggle="collapse" aria-expanded="false">
+                        <i class="fas fa-map"></i>
+                        Gestionar Paises</a>
+
+                    <ul class="collapse list-unstyled" id="menuPais">
+                        <li>
+
+                            <a href="#pais" data-toggle="collapse" aria-expanded="false" id="categorias2">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Paises</a>
+                            <ul class="collapse list-unstyled " id="pais">
+                            	<li>
+                                    <a href="/listaPaises">Lista Paises</a>
+                                </li>
+                                <li >
+                                    <a href="/inicioPais" >Agregar Pais</a>
+                                </li>                             
+                            </ul>
+                        </li>
+
+                        <li>
+
+                            <a href="#Departamentos" data-toggle="collapse" aria-expanded="false" id="categorias2">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Departamentos</a>
+                            <ul class="collapse list-unstyled " id="Departamentos">
+                            	<li>
+                                    <a href="/departamento/ListaDept">Lista Departamentos</a>
+                                </li>
+                                <li>
+                                    <a href="/departamento/iniciodept" >Agregar Departamento</a>
+                                </li>     
+                            </ul>
+                        </li>
+
+                        <li>
+
+                            <a href="#Municipios" data-toggle="collapse" aria-expanded="false" id="categorias2">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Municipios</a>
+                            <ul class="collapse list-unstyled " id="Municipios">
+                                <li>
+                                    <a href="/listaMunicipios">Lista Municipios</a>
+                                </li>
+                                <li>
+                                    <a href="/inicioMunicipio" >Agregar Municipio</a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </li>
+                
+
+                <li>
+
+                    <a href="#categorias" data-toggle="collapse" aria-expanded="false">
+                        <i class="fas fa-tags"></i>
+                        Categorias</a>
+                    <ul class="collapse list-unstyled" id="categorias">
+                        <li th:each="categoria : ${categorias}">
+                            <a  th:text="${categoria.nombre}">categorias</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li sec:authorize="isAuthenticated()">
+                    <a href="#">
+                        <i class="fas fa-comments"></i>
+                        Mensajes</a>
+                </li>
+
+                <li>
+                    <a href="/user/anuncio">
+                        <i class="fas fa-shopping-cart"></i>
+                        Publicar</a>
+                </li>
+                        
+
+                <li>
+                    <div class="row">
+                        <i class="fas fa-globe"
+                            style="margin-left: 7%;margin-top: 4%;font-size: 20px;margin-bottom: -20%;"></i>
+                        <select id="locales">
+
+                            <option selected th:text="#{language}">Idioma </option>
+                            <option value="es" th:text="#{language.spanish}">español</option>
+                            <option value="en" th:text="#{language.english}"></option>
+                            <option value="fr" th:text="#{language.frances}"></option>
+                        </select>
+                    </div>
+                </li>
+
+
+            </ul>
+
+            <ul class="list-unstyled CTAs"  style="margin-top: 1.8rem">
+           		<li sec:authorize="isAuthenticated()">
+             		<a href="#" id="cerrar" class="btn btn-outline-light">
+                    <form th:action="@{/logout}" method="post"  >
+            			<input type="submit" value="Cerrar Sesion" id="botonc"/>
+        			</form></a>
+             	</li>
+                <li sec:authorize="!isAuthenticated()" style="margin-top: 1rem">
+                    <a href="/signUp" class="btn btn-outline-light">Iniciar Sesion</a>
+                </li>
+                <li sec:authorize="!isAuthenticated()">
+                    <a href="/inicioU">Registrarte</a>
+                </li>
+            </ul>
+        </nav>
+
+	        <nav class="navbar  navbar-menu sticky-top" style="background: #ffffff;margin-bottom: 0%;position: inherit;">
+	
+	            <a href="/">
+	                <img src="static/img/logo.jpg" class="card-img-top" th:src="@{/img/logo.jpg}" style="width: 200px;">
+	            </a>
+	     	
+			
+	            <button type="button" id="sidebarCollapse" class="btn" >
+	                <span class="fas fa-bars">
+	            </button>
+	        </nav>
+        <hr style="background-color:#1c89d1; height: 3px; padding: 0 ;margin: 0" >
+        
+        
+
+    </div>
+    <!-- Page Content  -->
+
+    <div class="overlay"></div>
+</div> 

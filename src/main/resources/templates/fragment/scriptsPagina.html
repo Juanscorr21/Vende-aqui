@@ -1,0 +1,39 @@
+<!-- framentos de  scripts de funcionalidad de la plataforma -->
+<div id="scripts" th:fragment="scripts">
+
+    <!-- framento script para Cambio de idioma -->
+    <script type="text/javascript">
+		$(document).ready(function() {
+			$("#locales").change(function() {
+				var selectedOption = $('#locales').val();
+				if (selectedOption != '') {
+					window.location.replace('?lang=' + selectedOption);
+				}
+			});
+		});
+	</script>
+
+	
+	
+	<!-- framento script para el funcionamiento de el menu de la plataforma -->
+	<script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#dismiss, .overlay').on('click', function () {
+                $('#sidebar').removeClass('active');
+                $('.overlay').removeClass('active');
+            });
+
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $('.overlay').toggleClass('active');  
+            });
+          
+        });
+    </script>
+
+</div>

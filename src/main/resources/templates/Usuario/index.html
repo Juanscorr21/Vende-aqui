@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"  lang="en">
+ <head>
+ 	<link rel="icon" type="image/png" href="static/img/logomini.png" th:href="@{/img/logomini.png}">
+   <div th:replace="fragment/Frames combo :: myheader"></div>
+   
+   	<link rel="stylesheet" type="text/css" href="static/css/stylesList.css" th:href="@{/css/stylesList.css}">
+   <link rel="stylesheet" type="text/css" href="static/css/stylesFormularios.css"
+        th:href="@{/css/styles-banner.css}">
+ </head>
+ <body>
+ 	<div> <div th:insert="fragment/Frames combo  :: menu" ></div></div>
+  
+    <!--<div th:insert="fragment/Frames combo  :: menuUser"  ></div>  <security:authorize access="hasAuthority('ADMIN')">
+       <div th:insert="fragment/Frames combo  :: menuAdmin" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"></div>-->
+
+
+	
+    		<div class="col-12 banner">
+    	</div>
+
+  
+
+   
+
+    <h1 class="text-center" style="background: #6bc82d;color: #ffffff;margin-top: 1%;"  th:if="${anuncios.isEmpty()}">No Hay Anuncios Publicados</h1>
+  
+    <div th:if="${!anuncios.isEmpty()}">
+    
+    <h1 class="text-center" style="background: #6bc82d;color: #ffffff;margin-top: 1%;">Anuncios Publicados</h1>
+
+    <div class="col-12" style="margin-top: 1%;">
+        <div class="card-columns row-cols-1 row-cols-md-1 row-cols-lg-1">
+            <div class="card container-anuncio " th:each="anuncio : ${anuncios}" style="margin-top: 10px;" id="">
+				 <div class="img-box" id="foto2">
+               <img th:src="${anuncio.urlFoto}" class="card-img-top"
+                    style="margin-bottom: 3%;border-top-left-radius: 15px;border-top-right-radius: 15px;">
+				</div>
+                <div class="col-12">
+                    <div class="card-body">
+                        <h1 class="card-title" th:text="${anuncio.titulo}" id="titulo"></h1>
+                        <div class="row">
+                            <span><i class="fas fa-dollar-sign"
+                                    style="font-size: 22px;margin-left: 12px;margin-right: 8px;margin-top: 2px;"></i></span>
+                            <h4 class="card-title" th:text="${anuncio.precio}"></h4>
+                        </div>
+                    </div>
+
+                    <p class="card-text" th:text="${anuncio.descripcion}"></p>
+
+
+                    <div class="text-center">
+                        <a th:href="@{/anuncioChat/{idAnuncio}(idAnuncio=${anuncio.idAnuncio})}" class="btn btn-outline-primary" style="margin-bottom:5%;">Ver</a>
+                    </div>
+                </div>
+            </div> 
+   		 </div>    
+    </div>
+    </div>
+
+<div th:insert="fragment/Frames combo :: foot"></div>
+
+
+</body>
+</html>

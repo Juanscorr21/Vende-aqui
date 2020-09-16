@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+   <div th:replace="fragment/Frames combo :: myheader"></div>
+   <link rel="stylesheet" type="text/css" href="static/css/stylesFormularios.css"
+        th:href="@{/css/stylesFormularios.css}">
+</head>
+<body>
+    <div th:insert="fragment/Frames combo  :: menu"></div>
+   
+    <div class="col-12">
+    <div class="container text-right col-sm-12 col-md-12 col-lg-11 contenedor">
+
+          <div class="text-center" id="menu">
+                <h2 style="padding-top: 3%;color:#1c89d1;font-size: 50px">Actualizar Anuncio
+                </h2>
+                <hr style="background-color:rgba(39, 144, 170, 0.822); height: 3px; margin-top: 15;margin-bottom: 5%;">            
+          </div>
+
+
+          <div class="col-12">
+              <form action="#" th:action="@{/user/actualizarAnuncio/{idAnuncio}(idAnuncio=${anuncio.idAnuncio})}" th:object="${anuncio}"  method="post"  enctype="multipart/form-data" >
+                <input type="hidden" id="agregarUrl" th:field="*{urlFoto}">  
+                  <input type="hidden" id="cambioURL" name="cambioUrl" value="false">   
+                  <div class="container col-sm-12 col-md-12 col-lg-12">
+                <div class="row text-left " style="margin-top: -2%;">
+
+                          <div class="col-sm-12  col-md-6 col-lg-7 form-group" id="user-group">
+                              <label for="nombre" style="font-size: 20px;">Titulo </label>
+                              <div class="input-group  ">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text" id="icono-categoria"><i
+                                              class="fab fa-product-hunt"></i></span>
+                                  </div>
+                                  <input type="text" class="form-control" th:field="*{titulo}" id="nombreUsuario"
+                                      placeholder="Ingrese Titulo" required="required">
+                              </div>
+                                <div th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
+                            
+                      </div>
+
+                      <div class="col-sm-12  col-md-6 col-lg-5 form-group" id="user-group">
+                          <label for="nombre" style="font-size: 20px;">Precio: </label>
+                          <div class="input-group  ">
+
+                              <div class="input-group-prepend">
+                                  <span class="input-group-text" id="icono-categoria"><i class="fas fa-dollar-sign"></i></span>
+                              </div>
+                              <input type="text" class="form-control"  th:field="*{precio}" id="nombreUsuario"
+                                  placeholder="Ingrese Precio" required="true">
+                          </div>
+            				 <div th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
+                      </div>                   
+                  </div>
+                  
+                  <div class="row text-left" style="margin-top: 0%;"  >      
+                      <div class="col-sm-12  col-md-6 col-lg-6 form-group" id="user-group">
+                          <label for="nombre" style="font-size: 20px;">Seleccione Subcategoria: </label>
+                          <div class="input-group  ">
+                              <div class="input-group-prepend">
+                                  <span class="input-group-text" id="icono-categoria"><i class="fas fa-tags"></i></span>
+                              </div>
+                               <select class="form-control" id="select"  th:field="*{subCategoria}" >
+                               		
+                     					<option th:each="subCategoria : ${subcategorias}" th:value="${subCategoria.idSubcategoria}" th:text="${subCategoria.nombre}"></option>	
+                  			</select>              
+                          </div>
+                        
+                      </div>
+                      <div class="col-sm-12  col-md-6 col-lg-6 form-group" id="user-group">
+
+                          <label for="nombre" style="font-size: 20px;margin-left: 2%;">Contacto: </label>
+                          <div class="input-group  ">
+                              <div class="input-group-prepend">
+                                  <span class="input-group-text" id="icono-categoria"> <i class="fas fa-address-book"></i></span>
+                              </div>
+                              <input type="text" class="form-control"  th:field="*{contacto}" placeholder="Ingrese Contacto"
+                                  required="required" >
+                          </div>
+                           <div th:if="${#fields.hasErrors('contacto')}" th:errors="*{contacto}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
+                      </div>
+                  </div>
+                  <div class="row text-left" style="margin-top: 0%;">
+                      <div class="col-sm-12 col-md-6 col-lg-6 form-group" id="user-group">                            
+                          <div class="text-left inputs-bg descripcion" id="user-group">
+                              <label for="nombre" style="font-size: 20px;margin-left: 4%;margin-top: 0%;margin-bottom: 3%;">Descripcion: </label>
+                              <textarea class="form-control "  rows="8" th:field="*{descripcion}" placeholder="Ingrese Descripcion" ></textarea>                
+                          </div>
+                         <div th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
+                      </div>
+                      <div class="col-sm-12 col-md-6 col-lg-5 form-group" id="user-group" >                            
+                          <div class="text-center inputs-bg descripcion" id="user-group">
+                              <label for="file-upload" class="btn btn-outline-primary" style="padding: -2%;margin-bottom: 3%;">Subir Imagen <i class="fas fa-angle-up"></i></label>
+                              <input type="file" id="file-upload" accept="imagen/*"   style="display: none"; name="file">                                   
+                          </div>   
+                                              
+                          <div>
+                              <img id="imcargar" class="text-center" th:src="${anuncio.urlFoto}">
+                          </div>
+                      </div>
+                  </div>
+                     
+
+                  <div class="text-center" id="button">
+                    <a th:href="@{/user/ListAnuncio}" class="btn btn-danger" id="button-forms"> <i
+                        class="far fa-times-circle"></i> Cancelar</a>
+                      <button	 type="submit" class="btn btn-success ">Actualizar  <i class="far fa-check-circle"></i></button>
+                  </div>
+
+                  </div>
+              </form>
+          </div>
+
+      </div>
+     
+  </div>
+   
+  <div th:insert="fragment/Frames combo :: foot"></div>
+ <script src="static/js/subirImagen.js" th:src="@{/js/subirImagen.js}"></script>
+
+</body>
+</html>

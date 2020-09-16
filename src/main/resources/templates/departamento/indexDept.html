@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+   <div th:replace="fragment/Frames combo :: myheader"></div>
+	<link rel="stylesheet" type="text/css" href="static/css/stylesList.css" th:href="@{/css/stylesList.css}">
+</head>
+<body>
+	      <div th:insert="fragment/Frames combo  :: menu"></div>
+ 
+	<div class="container col-sm-12 col-lg-10 mt-4 text-center main-section-categoria" >  
+
+       <header class="col-sm-12 col-lg-12 text-center  myheader">
+           <div class="content">
+               <a class="titulo" href="add-usuario.html" th:href="@{/departamento/iniciodept}" >Lista Departamentos</a>
+           </div>
+       </header> 
+             
+       <div class="modal-content-tabla table-responsive"  th:switch="${subcategorias}">  
+       
+            
+           <table class="table table-striped table-hover table-lg">
+              <thead>
+                  <tr class="nombre-tabel">	           	
+                    <th colspan="1">Pais</th>
+                     <th colspan="1">Nombre</th>
+                      <th colspan="2">Cambios</th>  
+            
+                  </tr>
+              </thead>
+                   <tbody>
+                    <td colspan="3" th:if="${departamentos.isEmpty()}">No Hay Departamentos Creados</td>
+                      <tr th:each="departamento : ${departamentos}" th:if="${!departamentos.isEmpty()}">
+                      <td th:text="${departamento.pais.nombre}"></td>  
+                       <td th:text="${departamento.nombre}"></td>  
+                       
+                       <td><a th:href="@{/departamento/editDept/{idDept}(idDept=${departamento.idDept})}" id="icon1"><i class="far fa-edit"></i></a>
+						</td>
+						<td><a th:href="@{/departamento/eliminarDept/{idDept}(idDept=${departamento.idDept})}" id="icon2"><i class="fas fa-eraser"></i></a>
+						</td>
+                      </tr>
+                  </tbody>
+           </table>
+     		
+        </div>
+   </div>
+   
+   <div th:insert="fragment/Frames combo  :: foot"></div>
+	</body>
+</html>

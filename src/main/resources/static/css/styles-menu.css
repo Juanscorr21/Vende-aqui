@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0px;
+  padding: 0px;
+  user-select: none;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+
+}
+
+#sidebarCollapse{
+	font-size: 32px;
+	color:#1c89d1
+}
+
+#sidebarCollapse:focus button{
+  outline: none;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.btn2 span{
+    color: #0099ff;
+    font-size: 28px;
+    line-height: 45px;
+}
+
+
+
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+
+#sidebar .text{
+	margin-top: 5%;
+	margin-bottom: 5%;
+    color: white;
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 65px;
+    text-align: center;
+    background: #1c89d1;
+    letter-spacing: 1px;
+}
+
+#sidebar .text a:hover{
+    font-size: 70px;
+    text-decoration: none;
+ 
+ }
+
+#sidebar {
+    margin-top:auto;
+    width: 375px;
+    position: fixed;
+    left: -379px;
+    height: 100vh;
+    z-index: 999;
+    background: #1c89d1;
+    color: #fff;
+    transition: all 0.3s;
+    overflow-y: scroll;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+#sidebar.active {
+    left: 0;
+}
+
+#dismiss {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background: #1c89d1;
+    position: absolute;
+    top: 35px;
+    right: 10px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+#dismiss:hover {
+    background: none;
+    color: #ffffff;
+    font-size: 30px;
+}
+
+.overlay {
+    top: 0%;
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    opacity: 0;
+    transition: all 0.8s ease-in-out;
+}
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+
+}
+
+#locales {
+	width: 80%;
+    color: inherit;
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    background: none;
+    border: none;
+
+}
+
+#locales:focus {
+  outline: none;
+}
+
+
+
+#sidebar ul li div:hover {
+    color: #1c89d1;
+    background: #fff;
+    
+   
+}
+
+
+#sidebar ul li a:hover {
+    color: #1c89d1;
+    background: #fff;
+    
+      
+}
+
+
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #1c89d1;
+    background: #ffffff;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 18px ;
+    padding-left: 30px ;
+    background: #0f598a;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em ;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+
+/* ---------------------------------------------------
+    Estilo submenus
+----------------------------------------------------- */
+#categorias2 {
+    color: white;
+    background: #7cbdc3;
+   
+}
+
+#sidebar ul li #categorias2:hover {
+    color: rgb(26, 165, 14);
+    background: rgb(221, 247, 255);
+   
+}
+
+#botonc {	
+	text-align:center;
+	padding:0%;
+	height:40px;
+	width:100%;
+	background: none;
+	border: none;
+	color: white; 
+}
+
+#sidebar ul li a:hover #botonc{
+	 color: #1c89d1;
+	font-size: 20px;
+}
+
+#botonc:focus {
+  outline: none;
+}
+
+li.active>#categorias2,
+#categorias2[aria-expanded="true"]{
+    color: rgb(26, 165, 14);
+    background: rgb(221, 247, 255);
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.8s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}

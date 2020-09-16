@@ -1,0 +1,220 @@
+/*diseño de contenedores de formularios*/
+.contenedor{
+	height:100%;
+    margin-top: 2%;
+  
+    box-shadow: 0px 0px 5px  rgb(0, 0, 0);
+    border-radius: 5px;
+}
+
+.contenedor:hover{
+    box-shadow: 0px 0px 10px  #5cb85c;
+}
+
+
+.contendor-inicio{
+    box-shadow: 0px 0px 8px  rgb(9, 31, 44);
+    border-radius: 5px;
+}
+
+.contendor-inicio:hover{
+ 
+    box-shadow: 0px 0px 10px  #5cb85c;
+
+}
+
+
+/*diseño de los campos de los formularios*/
+.input-group  input{  
+
+    background-color: rgba(247, 250, 245, 0.849);
+    font-size: 20px;
+    border-left:  none; 
+    border-top-right-radius: 10px; 
+    border-bottom-right-radius: 10px; 
+    transition: all 0.3s ease;
+}
+
+.input-group:focus{  
+  box-shadow: 0px 0px 8px  #1c89d1; 
+   border-radius: 10px; 
+}
+
+
+
+.contenedor label{
+    margin-left: 5%;
+    
+}
+.contenedor label:hover  {  
+	color: #5cb85c;
+}
+
+
+.descripcion textarea:hover{
+  box-shadow: 0px 0px 8px  #1c89d1; 
+
+}
+
+.descripcion textarea{
+    background-color: rgba(247, 250, 245, 0.849);
+    font-size: 20px;
+    margin-left: 1%; 
+    margin-bottom: 3%;
+    box-shadow: 0px 0px 2px 0 rgb(14, 14, 14);
+    transition: all 0.3s ease;
+}
+
+.contenedor select{
+    background-color: rgba(247, 250, 245, 0.849);
+    font-size: 20px;
+    border-left:  none; 
+    border-top-right-radius: 10px; 
+    border-bottom-right-radius: 10px; 
+    margin-bottom: 5%;
+    transition: all 0.3s ease;
+}
+
+#icono-categoria {
+    background-color: rgba(247, 250, 245, 0.849);
+    border-right: none;
+    border-top-left-radius: 10px; 
+    border-bottom-left-radius: 10px; 
+    color: #263033;  
+    transition: all 0.3s ease;
+}
+
+
+
+.input-group:hover #icono-categoria{  
+	color: #1c89d1;
+}
+
+
+
+/*diseño de la imagen  de los formularios*/
+.form-group img{
+    width: 105%;
+    height:auto;
+    margin-top: -1%;
+    margin-left: 0%  ;   
+    justify-items: center; 
+}
+
+/*diseño de los botonones  de los formularios*/
+.button button{
+    font-size: 20px;
+    margin-top: 1%;
+    margin-bottom: 3%;
+}
+
+.button2 button{
+
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.boton-inicio a{
+    font-size: 20px;
+    color: rgba(85, 85, 85, 0.336);
+    margin-bottom: 3%;
+}
+
+.boton-inicio a:hover{
+    color: rgb(31, 153, 127);
+}
+
+
+#button button{
+    font-size: 20px;
+    margin-top: 0%;
+    margin-bottom: 4%;
+}
+
+#button a{
+    font-size: 20px;
+    margin-top: 0%;
+    margin-bottom: 4%;
+}
+
+
+/*diseño de los iconos de las redes sociales  de los formularios*/
+.social-media {
+    margin-top: 10%;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.social-icon {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0.45rem;
+    color: #333;
+    border-radius: 50%;
+    border: 1px solid #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: 0.3s;
+  }
+  
+.social-icon:hover {
+    color: #4481eb;
+    border-color: #4481eb;
+}
+
+/*diseño de los contenedores de errores*/
+#x::before{
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f00d";
+    margin-right: 2%
+
+}
+
+.error{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px; 
+    border-bottom-right-radius: 10px; 
+}
+
+form .btn2{
+  margin-left:auto;
+  margin-right:auto;
+  
+  height: 50px;
+  width: 50%;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+form .btn2 .btn-layer{
+  height: 100%;
+  width: 300%;
+  position: absolute;
+  left: -100%;
+  background: -webkit-linear-gradient(right, #3bf023, #0f81ce, #3bf023);
+  border-radius: 5px;
+  transition: all 0.4s ease;;
+}
+form .btn2:hover .btn-layer{
+  left: 0;
+}
+form .btn2 input[type="submit"]{
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  position: relative;
+  background: none;
+  border: none;
+  color: #fff;
+  padding-left: 0;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+
+}

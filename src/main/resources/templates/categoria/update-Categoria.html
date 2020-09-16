@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <div th:replace="fragment/Frames combo :: myheader"></div>
+   <link rel="stylesheet" type="text/css" href="static/css/stylesFormularios.css"
+        th:href="@{/css/stylesFormularios.css}">
+</head>
+<body>
+
+<div th:insert="fragment/Frames combo  :: menu"></div>
+   <div class="container  col-sm-12 col-md-12 col-lg-7 contenedor" style="margin-top: 5rem;">
+
+    
+			<div class="text-center" id="menu">
+                <h2 style="padding-top: 3%;color:#1c89d1;font-size: 50px"th:text="#{updatecategory.title}">
+                </h2>
+                <hr style="background-color:rgba(39, 144, 170, 0.822); height: 3px; margin-top: 15;margin-bottom: 5%;">
+            </div>
+         
+             <form action="#"  th:action="@{/admin/actualizarCategoria/{idCategoria}(idCategoria=${categoria.idCategoria})}" th:object="${categoria}" method="post">
+                
+                 
+                 <div class="text-left inputs-bg" id="user-group">
+                     <label for="nombre" style="font-size: 20px;margin-left: 2%;" th:text="#{registercategory.updatelabel}">Nombre Categoria: </label>
+                     <div class="input-group  ">
+                         <div class="input-group-prepend">
+                             <span class="input-group-text" id="icono-categoria"><i class="fas fa-tags"></i></span>
+                         </div>
+                         <input type="text" class="form-control" th:field="*{nombre}" id="nombre"
+                             th:placeholder="#{namecategori.placeholder}" required="required">
+                     </div>
+                     <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
+                 	<div th:if="${categoriaExistente}" th:text="${categoriaExistente}"   class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
+                 </div>
+
+               
+
+                 <div class="text-center button2">
+                 
+                 	<a th:href="@{/admin/c}" href="/c" class="btn btn-danger" id="button-forms" th:text="#{updatecategory.btnCancel}" > Cancelar</a>
+                     <button type="submit" class="btn btn-success" th:text="#{updatecategory.btnUddate}">Actualizar</button>
+                 </div>
+
+             </form>
+     </div>
+        
+        <div th:insert="fragment/Frames combo :: foot"></div>
+</body>
+</html>

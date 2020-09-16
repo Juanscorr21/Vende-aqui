@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <div th:replace="fragment/Frames combo :: myheader"></div>
+  
+  <link rel="stylesheet" type="text/css" href="static/css/stylesFormularios.css"
+        th:href="@{/css/stylesFormularios.css}">
+        
+
+        
+</head>
+<body>
+
+<div th:insert="fragment/Frames combo  :: menu"></div>
+ 
+ 
+ <div class="container  col-sm-12 col-md-12 col-lg-9 contenedor"
+        style="margin-top: 2rem;">
+
+
+
+        <div class="text-center" id="menu">
+            <h2  style="padding-top: 3%;color:#1c89d1;font-size: 50px">Registrar Muncipio
+               </h2>
+            <hr style="background-color:rgba(39, 84, 170, 0.822); height: 3px; margin-top: 15;margin-bottom: 5%;">
+        </div>
+        <form action="#" th:action="@{/agregarMunicipio}" th:object="${municipio}" method="post"> 
+
+            <div class="row text-left " style="margin-top: -2%;">
+
+                <div class="col-sm-12  col-md-6 col-lg-6 form-group" id="user-group">
+                    <label for="nombre" style="font-size: 20px;margin-left: 2%;">Seleccione Pais: </label>
+                    <div class="input-group  ">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="icono-categoria"><i class="fas fa-map-marker-alt"></i></span>
+                        </div>
+                        <select class="form-control" th:field="*{departamento.pais}" name="pais"> 
+                            <option th:each="pais : ${paises}" th:value="${pais}" th:text="${pais}" >Pais
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-12  col-md-6 col-lg-6 form-group" id="user-group">
+                    <label for="nombre" style="font-size: 20px;margin-left: 2%;">Seleccione Departamento: </label>
+                    <div class="input-group  ">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="icono-categoria"><i class="fas fa-map-marker-alt"></i></span>
+                        </div>
+                        <select class="form-control" th:field="*{departamento}" name="departamento">
+                            <option th:fragment="departamento"  th:each="departamento : ${departamentos}" th:value="${departamento.idDept}" th:text="${departamento}">Departamento
+                            </option>
+                        </select>
+                    </div>                   
+                </div>
+            </div>
+
+            <div class="text-left inputs-bg" id="user-group">
+                <label for="nombre" style="font-size: 20px;margin-left: 2%;margin-top: 3%;">Nombre Municipio: </label>
+                <div class="input-group  ">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="icono-categoria"><i class="fas fa-map-marker-alt"></i></span>
+                    </div>
+                    <input type="text" class="form-control" th:field="*{nombre}" id="nombre"  placeholder="Ingrese Nombre" required="required">
+                </div>
+                <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
+            </div>
+            <div class="text-center button2">                  
+                    <button type="submit" class="btn btn-success">Agregar <i class="far fa-check-circle"></i></button>
+            </div>
+        </form>
+    </div>
+  
+  
+  <div th:insert="fragment/Frames combo :: foot"></div>
+     
+
+	
+	<!-- framento script para select readtivo -->
+	<script th:inline="javascript">
+		$(function() {
+			$("#departamento").load('inicioMunicipio/ajax/paises', $("#pais").serialize());
+			$('#pais').on('change', function() {
+				$("#departamento").load('inicioMunicipio/ajax/paises', $("#pais").serialize());
+			});
+		});
+	</script>
+
+  
+  
+</body>
+</html>
+       

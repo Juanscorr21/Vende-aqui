@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+ <head>
+ <link rel="icon" type="image/png" href="static/img/logomini.png" th:href="@{/img/logomini.png}">
+   <div th:replace="fragment/Frames combo :: myheader"></div>
+   <link rel="stylesheet" type="text/css" href="static/css/stylesFormularios.css"
+        th:href="@{/css/carrusel.css}">
+        
+ </head>
+ <body>
+   <div th:insert="fragment/Frames combo  :: menu"></div>
+   
+ 
+    <div class="wrapper1" >
+      <div class="title-text text-center">
+        <div class="title-text">
+          <div class="title login" style="font-size: 49px;color:#58d410">
+            Ingresar</div>
+         
+        </div>
+      </div>
+      <div class="form-container">
+        <div class="slide-controls">
+          <input type="radio" name="slide" id="login" checked>
+          <input type="radio" name="slide" id="signup">
+          <label for="login" class="slide login"><a href="/signUp">Ingresar</a></label>
+          <label for="signup" class="slide signup"><a href="/inicioU">Registrate</a></label>
+          <div class="slider-tab" href="/inicioU">
+          </div>
+        </div>
+        
+       	     
+        <div class="form-inner inicio" style="margin-top: 0%;">
+          <form action="#" class="login " th:action="@{/signUp}" method="post" style="margin-top: 0%;" >
+            <div class="field">
+              <label for="nombre" style="font-size: 20px;margin-left: 2%;" >Nombre Usuario: </label>
+              <input type="text"  placeholder="Ingrese Nombre Usuario" name="nombreUsuario" required="required">
+            
+          </div>
+
+          <div class="field">
+            <label for="nombre" style="font-size: 20px;margin-left: 2%;" >Contrasena: </label>
+            <input type="password"  placeholder="Ingrese contrasena" name="contrasena" required="required">  
+          </div>
+          
+           <div th:if="${param.error}"  class="alert alert-danger error text-center" role="alert" data-dismiss="alert"  id="x" style="margin-top: 1%;margin-bottom: -1% "> 
+            Nombre de usuario y/o contrasena son invalidos</div>  
+                  
+          <div class="field btn2" style="margin-top: 2.4%;">
+            <div class="btn-layer">
+            </div>
+            <input type="submit" value="Iniciar Sesion">
+          </div>
+          
+
+         <div class="pass-link  text-center" style="margin-top: 2%;color: #1c89d1;margin-bottom: 2px">
+            <a href="#">Olvidaste tu password?</a></div>
+            
+         
+
+        </form>   
+        
+        		
+      
+      </div>
+    </div>
+  
+  </div>
+    <!-- Fuente: https://www.codingnepalweb.com/2020/08/animated-login-and-signup-form-design.html  -->
+    
+   <div th:insert="fragment/Frames combo :: foot"></div>
+   
+  
+ </body>
+</html>

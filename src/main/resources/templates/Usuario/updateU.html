@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <div th:replace="fragment/Frames combo :: myheader"></div>
+   <link rel="stylesheet" type="text/css" href="static/css/stylesFormularios.css"
+        th:href="@{/css/stylesFormularios.css}">
+</head>
+<body>
+ <div th:insert="fragment/Frames combo  :: menu"></div>
+ <div class="row col-12">
+        <div class="container text-right col-sm-12 col-md-12 col-lg-6 ml-3 contenedor" >
+
+          
+             <div class="text-center" id="menu">
+                <h2 style="padding-top: 3%;color:#1c89d1;font-size: 50px" th:text="#{adduser.title}">
+                </h2>
+                <hr style="background-color:rgba(39, 144, 170, 0.822); height: 3px; margin-top: 15;margin-bottom: 5%;">
+            </div>
+
+            <div class="col-12 ">
+                <form action="#" th:action="@{/actualizarU/{dni}(dni=${usuario.dni})}" th:object="${usuario}"  method="post">
+                     <div class="row text-left formularios">
+                        <div class="col-sm-12  col-md-6 col-lg-6 form-group" id="user-group">
+                            <label for="nombre" style="font-size: 20px;" th:text="#{adduser.name}">Nombre: </label>
+
+                            <div class="input-group  ">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="icono-categoria"> <i
+                                            class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" class="form-control" th:field="*{nombre}" id="nombre"
+                                    th:placeholder="#{adduser.placeholder.name}" required="required">
+                            </div>
+                            <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
+                        </div>
+                        <div class="col-sm-12  col-md-6 col-lg-6 form-group" id="user-group">
+                            <label for="nombre" style="font-size: 20px;" th:text="#{adduser.lastname}">Apellido: </label>
+                            <div class="input-group  ">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="icono-categoria"><i
+                                            class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="apellido" th:field="*{apellido}" th:placeholder="#{adduser.placeholder.lastname}"
+                                    required="required">
+                            </div>
+                            <div th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
+                        </div>
+                    </div>
+                    <div class="row text-left">
+                        <div class="col-sm-12  col-md-6 col-lg-6 form-group" id="user-group">
+                            <label for="nombre" style="font-size: 20px;" th:text="#{adduser.UserName}">Nombre Usuario: </label>
+                            <div class="input-group  ">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="icono-categoria"> <i
+                                            class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" class="form-control" th:field="*{nombreUsuario}" id="nombreUsuario"
+                                    th:placeholder="#{adduser.placeholder.UserName}" required="required">
+                            </div>
+                            <div th:if="${#fields.hasErrors('nombreUsuario')}" th:errors="*{nombreUsuario}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
+                        </div>
+                        <div class="col-sm-12  col-md-6 col-lg-6 form-group" id="user-group">
+                            <label for="nombre" style="font-size: 20px;" th:text="#{adduser.telephone}">Telefono: </label>
+                            <div class="input-group  ">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="icono-categoria"><i
+                                            class="fas fa-phone"></i></span>
+                                </div>
+                                <input type="text" class="form-control" th:field="*{telefono}" id="Telefono" th:placeholder="#{adduser.placeholder.telephone}"
+                                    required="required">
+                            </div>
+                            <div th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
+                        </div>
+                    </div>
+                    <div class="text-left inputs-bg" id="user-group">
+                        <label for="nombre" style="font-size: 20px;margin-left: 2%;" th:text="#{adduser.email}">E-mail: </label>
+                        <div class="input-group  ">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="icono-categoria"> <i
+                                        class="fas fa-envelope"></i></span>
+                            </div>
+                            <input type="email" class="form-control" th:field="*{email}" id="email"
+                                th:placeholder="#{adduser.placeholder.email}" required="required">
+                        </div>
+                        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
+                    </div>
+
+                    <div class="text-left inputs-bg" id="user-group">
+                        <label for="nombre" style="font-size: 20px;margin-left: 2%;margin-top: 2%;" th:text="#{adduser.address}">Direccion: </label>
+                        <div class="input-group  ">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="icono-categoria"><i
+                                        class="fas fa-map-marker-alt"></i></span>
+                            </div>
+                            <input type="text" class="form-control" th:field="*{descripcion}" id="direccion"  th:placeholder="#{adduser.placeholder.address}"
+                                required="required">
+                        </div>
+                        <div th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
+                    </div>
+
+                    <div class="row text-left formularios">
+                        <div class="col-sm-12  col-md-6 col-lg-6 form-group" id="user-group">
+                            <label for="nombre" style="font-size: 20px;margin-top: 2%;" th:text="#{adduser.password}">Contrasena: </label>
+
+                            <div class="input-group  ">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="icono-categoria"> <i
+                                            class="fas fa-lock"></i></span>
+                                </div>
+                                <input type="password" class="form-control" th:field="*{contrasena}" id="contrasena" th:placeholder="#{adduser.placeholder.password}"
+                                    required="required">
+                            </div>
+                            <div th:if="${#fields.hasErrors('contrasena')}" th:errors="*{contrasena}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
+                        </div>
+                        <div class="col-sm-12  col-md-6 col-lg-6 form-group" id="user-group">
+                            <label for="nombre" style="font-size: 20px;margin-top: 2%;" th:text="#{adduser.confirmPassword}">Confirmar Contrasena: </label>
+                            <div class="input-group  ">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="icono-categoria"><i
+                                            class="fas fa-lock"></i></span>
+                                </div>
+                                <input type="password" class="form-control" id="conficontrasena" th:placeholder="#{adduser.placeholder.Confirm}"  th:field="*{conficontrasena}"
+                                    required="required">
+                            </div>
+                             <div th:if="${errorPassword}" th:text="${errorPassword}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="text-center button">
+                        <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i></button>
+                    </div>
+
+                </form>
+            </div>
+
+
+        </div>
+        <nav class="navbar navbar-expand-lg ">
+            <div class="collapse navbar-collapse">
+                <div style="width:35rem;margin-top: 10%;margin-right:-1%;">
+                    <img src="static/img/log.svg" class="card-img-top" th:src="@{/img/log.svg}">
+
+                    <div class="social-media">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+ <div th:insert="fragment/Frames combo  :: foot"></div>
+</body>
+</html>
+
+
+

@@ -1,0 +1,183 @@
+body{
+
+    background-size: cover;
+     font-family: ivypresto-headline, serif;
+    font-style: normal;
+    font-weight: 100;
+}
+
+
+.main-section-categoria{
+   
+    margin-bottom: 3%;
+    padding: 0;
+    box-shadow: 0px 0px 8px 0 rgb(85, 84, 84);
+    border-radius: 3px;
+}
+
+.myheader{
+    background: #5399dffa;
+    margin-bottom:-1px;
+    font-size: 45px;
+    border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+   
+}
+
+.myheader:hover{
+    color: rgb(251, 251, 251);
+    background: rgba(50, 124, 197, 0.849);
+    text-decoration: none;
+}
+
+
+.nombre-tabel{
+    background-color: #5cb85c;
+    color: aliceblue;
+    
+}
+
+.table-striped{
+    font-size: 25px;
+	background-color: rgba(234, 246, 248, 0.822);
+    margin-bottom: 0%;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.titulo{
+    color: #f8f8f8;
+    text-decoration: none;
+}
+
+.titulo:hover{
+    color: rgb(251, 251, 251); 
+    text-decoration: none;
+}
+
+
+#icon1{
+    font-size: 25px;
+    margin-right: 15%;
+    margin-left: 30%;
+    color: rgb(114, 113, 113);
+}
+
+#icon1:hover{
+    color: rgb(27, 177, 97);
+    
+}
+
+#icon2{
+    font-size: 25px;
+    color: rgb(114, 113, 113);
+    margin-right: 5%;
+}
+#icon2:hover{
+    color: rgb(230, 26, 26);
+   
+    
+}
+
+/** contenedor de lista de anuncios*/
+.container-anuncio{
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px  rgb(0, 0, 0);
+    
+}
+
+.container-anuncio:hover{
+    box-shadow: 0px 0px 5px   #1c52d1;
+    -webkit-transform:scale(0.96);
+    -moz-transform:scale(0.96);
+    -ms-transform:scale(0.96);
+    -o-transform:scale(0.96);
+    transform:scale(0.96);
+    
+}
+
+.container-anuncio:hover #titulo{
+  
+    color: #5cb85c;
+ 
+}
+
+
+.container-error{
+  
+    margin-top: 5%;
+    border-radius: 25px;
+    box-shadow: 0px 0px 8px  rgb(0, 0, 0);
+    border: none;
+    
+}
+
+
+#icon-list{
+    font-size: 20px;
+    color: rgb(126, 126, 126);
+   
+    margin-bottom: 5%;
+    
+}
+#icon-list:hover{
+    color: rgb(230, 26, 26);
+   
+    
+}
+
+#icon-list2{
+    font-size: 20px;
+    color: rgb(126, 126, 126);
+    margin-bottom: 5%;
+ 
+
+}
+#icon-list2:hover{
+    color: rgb(67, 148, 224);
+   
+    
+}
+
+#foto {
+    margin-top: 1%;
+   
+    width: 100%; 
+    height: 348PX;
+    overflow: auto;
+	 :center;
+    border: 10px;
+    border: solid 2px #47a1ebd0;
+}
+#foto img{
+  justify-content: center;
+}
+
+#foto2{
+ 
+    width: 100%; 
+    height: 275px;
+    overflow: auto;
+  border-radius: 15px;
+
+}
+
+#card{
+	
+    width: 100%;margin-top: 1%;
+   	margin-right:-8%;
+     border: solid 2px #47a1ebd0;
+}
+#card:hover{
+    border: solid 2px #47eb55d0;
+}
+
+#foto:hover{
+ 
+    border: solid 2px #47eb55d0;
+}
+::-webkit-scrollbar {
+	width: 0;
+	
+}

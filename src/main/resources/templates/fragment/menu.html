@@ -196,7 +196,7 @@
             <ul class="list-unstyled CTAs"  style="margin-top: 1.8rem">
            		<li sec:authorize="isAuthenticated()">
              		<a href="#" id="cerrar" class="btn btn-outline-light">
-                    <form th:action="@{/logout}" method="post"  >
+                    <form th:action="@{/logout}" method="post">
             			<input type="submit" value="Cerrar Sesion" id="botonc"/>
         			</form></a>
              	</li>

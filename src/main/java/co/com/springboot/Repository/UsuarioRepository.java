@@ -12,9 +12,9 @@ import co.com.springboot.domain.Usuario;
 
 @Repository
 public interface UsuarioRepository  extends CrudRepository<Usuario, Integer>{
-	Usuario findByNombre(String nombre);
+	//Usuario findByNombreUsuario1(String username);
 	Usuario findByDni(int id_usuario);
 	Optional<Usuario> findByNombreUsuario(String username);
-	Optional<Usuario> findByEmail(String email);
+	Usuario findByEmail(String email);
 
 }

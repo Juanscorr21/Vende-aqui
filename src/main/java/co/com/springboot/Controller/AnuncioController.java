@@ -8,8 +8,10 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,7 @@ import co.com.springboot.CloudinaryConfig;
 import co.com.springboot.Repository.AnuncioRepository;
 import co.com.springboot.Repository.AuthorityRepository;
 import co.com.springboot.Repository.CategoriaRepository;
+
 import co.com.springboot.Repository.SubCategoriaRepository;
 import co.com.springboot.Repository.UsuarioRepository;
 import co.com.springboot.domain.Anuncio;
@@ -52,6 +55,8 @@ public class AnuncioController {
 	
 	@Autowired
 	private AuthorityRepository authorityRepository;
+	
+
 
 	
 
@@ -97,9 +102,7 @@ public class AnuncioController {
 	    	return "Anuncio/add-anuncio";
 	     }
 	  
-	    /**UserDetails user = (UserDetails) authenticationUser.getAuthentication();
-	    Usuario usuario = usuarioRepo.findByNombre(user.getUsername());
-	    anuncio.setUsuario(usuario);*/
+	 
 	    
 	   try {
 	    	Map uploadResult= cloudinary.upload(file.getBytes(), ObjectUtils.asMap("resourcetype","auto"));
@@ -134,6 +137,10 @@ public class AnuncioController {
 
 	         	return "Anuncio/update-anuncio";
 	        }
+	        /**Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	        UserDetails userDetail =  (UserDetails) auth.getPrincipal();
+	        Usuario usuario = usuarioRepo.findByEmail(userDetail.getUsername());
+	        anuncio.setUsuario(usuario);*/
 	        
 	        try {
 		    	Map uploadResult= cloudinary.upload(file.getBytes(), ObjectUtils.asMap("resourcetype","auto"));

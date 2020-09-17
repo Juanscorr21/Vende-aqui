@@ -61,22 +61,13 @@ public class UsuarioController {
 	@PostMapping("/agregarU")
 	  public String agregarUsuario(@Valid Usuario usuario,BindingResult resultado, Model model) {
 		
-		Optional<Usuario> nombreExist = userRepo.findByNombreUsuario(usuario.getNombreUsuario());
-		Optional<Usuario> emailExist = userRepo.findByEmail(usuario.getEmail());
-		if(nombreExist.isPresent() || emailExist.isPresent()) {
+		Optional<Usuario> nombreExist = userRepo.findByNombreUsuario(usuario.getNombreUsuario());		
+		if(nombreExist.isPresent()) {
+						
+				model.addAttribute("nombreUsuario","Nombre de usuario ya esta en uso");				
+				return  "Usuario/add-usuario2";
 			
-			if(nombreExist.isPresent() && emailExist.isPresent()) {
-				model.addAttribute("nombreUsuario","Nombre de usuario ya esta en uso");
-				model.addAttribute("correo","Ya esta en uso este correo electronico");
-				return  "Usuario/add-usuario2";
-			}else if(nombreExist.isPresent() && !emailExist.isPresent()) {	
-				model.addAttribute("nombreUsuario","Nombre de usuario ya esta en uso");
-				return  "Usuario/add-usuario2";
- 			 }else if(emailExist.isPresent() && !nombreExist.isPresent()) {	
-				model.addAttribute("correo","Ya esta en uso este correo electronico");
- 			   	return  "Usuario/add-usuario2";}
-
-		}
+			}
 		
 		if (!usuario.getContrasena().equals(usuario.getConficontrasena())) {			
  			model.addAttribute("errorPassword", Mensaje);
@@ -127,20 +118,13 @@ public class UsuarioController {
 	    public ModelAndView actulizarUsurio(@PathVariable("dni") int dni, @Valid Usuario usuario, BindingResult resultado, Model model) {
 		 
 		 
-		 Optional<Usuario> nombreExist = userRepo.findByNombreUsuario(usuario.getNombreUsuario());
-		 Optional<Usuario> emailExist = userRepo.findByEmail(usuario.getEmail());
-		if(nombreExist.isPresent() || emailExist.isPresent()) {
+		Optional<Usuario> nombreExist = userRepo.findByNombreUsuario(usuario.getNombreUsuario());
+		
+		if(nombreExist.isPresent()) {
+						
+				model.addAttribute("nombreUsuario","Nombre de usuario ya esta en uso");				
+				return new ModelAndView("Usuario/updateU");
 			
-			if(nombreExist.isPresent() && emailExist.isPresent()) {
-				model.addAttribute("nombreUsuario","Nombre de usuario ya esta en uso");
-				model.addAttribute("correo","Ya esta en uso este correo electronico");
-				return new ModelAndView("Usuario/updateU");
-			}else if(nombreExist.isPresent() && !emailExist.isPresent()) {	
-				model.addAttribute("nombreUsuario","Nombre de usuario ya esta en uso");
-				return new ModelAndView("Usuario/updateU");
- 			 }else if(emailExist.isPresent() && !nombreExist.isPresent()) {	
-				model.addAttribute("correo","Ya esta en uso este correo electronico");
-				return new ModelAndView("Usuario/updateU");}
 			}
 			
 		 if (!usuario.getContrasena().equals(usuario.getConficontrasena())) {			

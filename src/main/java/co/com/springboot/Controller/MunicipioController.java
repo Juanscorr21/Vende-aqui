@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import co.com.springboot.Repository.DeptRepository;
 import co.com.springboot.Repository.MunicipioRepository;
@@ -44,8 +45,8 @@ public class MunicipioController {
 	       return "municipio/add-Municipio";
 	  }
 	
-	@RequestMapping("inicioMunicipio/ajax/paises")
-	public String ajaxDept(@RequestParam("pais") String pais,Model model) {
+	@RequestMapping(value = "/inicioMunicipio/ajax/paises")
+	public @ResponseBody String ajaxDept(@RequestParam("pais") String pais,Model model) {
 		List<String> departamentos =  deptRepo.findAllPaisByNombre(pais);
 		model.addAttribute("departamentos", departamentos);
 		return "municipio/add-Municipio :: departamento";

@@ -29,12 +29,12 @@
             <div class="row text-left " style="margin-top: -2%;">
 
                 <div class="col-sm-12  col-md-6 col-lg-6 form-group" id="user-group">
-                    <label for="nombre" style="font-size: 20px;margin-left: 2%;">Seleccione Pais: </label>
+                    <label for="pais" style="font-size: 20px;margin-left: 2%;">Seleccione Pais:</label>
                     <div class="input-group  ">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="icono-categoria"><i class="fas fa-map-marker-alt"></i></span>
                         </div>
-                        <select class="form-control" th:field="*{departamento.pais}" name="pais"> 
+                        <select class="form-control" th:field="*{departamento.pais}" required="required"> 
                             <option th:each="pais : ${paises}" th:value="${pais}" th:text="${pais}" >Pais
                             </option>
                         </select>
@@ -48,7 +48,7 @@
                             <span class="input-group-text" id="icono-categoria"><i class="fas fa-map-marker-alt"></i></span>
                         </div>
                         <select class="form-control" th:field="*{departamento}" name="departamento">
-                            <option th:fragment="departamento"  th:each="departamento : ${departamentos}" th:value="${departamento.idDept}" th:text="${departamento}">Departamento
+                            <option th:fragment="departamento"  th:each="departamento : ${departamentos}" th:value="${departamento}" th:text="${departamento}">Departamento
                             </option>
                         </select>
                     </div>                   

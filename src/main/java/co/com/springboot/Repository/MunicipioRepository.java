@@ -16,6 +16,8 @@ public interface MunicipioRepository extends CrudRepository<Municipio, Integer> 
 	Municipio findByidMunicipio(int id_municipio);
 	List<Municipio> findByNombre(String nombre);
 	
+
+	
 	
 	
 

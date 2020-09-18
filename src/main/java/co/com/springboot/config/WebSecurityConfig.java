@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.access("hasRole('USER') or hasRole('ADMIN')").anyRequest().authenticated().and().formLogin()
 				.loginPage("/signUp").permitAll().defaultSuccessUrl("/").failureUrl("/login?error=true")
 				.usernameParameter("nombreUsuario").passwordParameter("contrasena").and().logout().permitAll()
-				.logoutSuccessUrl("/login?logout");
+				.logoutSuccessUrl("/signUp?logout");
 	}
 	
 	

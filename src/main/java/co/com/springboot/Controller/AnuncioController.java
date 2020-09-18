@@ -88,7 +88,7 @@ public class AnuncioController {
 	      model.addAttribute("anuncios", anuncioRepo.findAll() );
 	      model.addAttribute("subcategorias", subCatRepo.findAll() );
 	  	  model.addAttribute("usuarios", usuarioRepo.findAll() );
-	      return "anuncio/indexAnuncio";
+	      return "Anuncio/indexAnuncio";
 	  }
 	
 	@PostMapping("/user/agregaranuncio")

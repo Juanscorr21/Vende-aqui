@@ -36,6 +36,10 @@ public class Municipio implements Serializable  {
 	@ManyToOne
 	@JoinColumn(name = "departamento_fk")
 	private Departamento departamento;
+	
+	@ManyToOne
+	@JoinColumn(name = "pais_fk")
+	private Pais pais;
 
 	 
 	 

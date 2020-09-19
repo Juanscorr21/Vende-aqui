@@ -2,7 +2,10 @@ package co.com.springboot.Controller;
 
 
 
+import java.util.List;
 import java.util.Map;
+
+
 
 import java.util.Optional;
 
@@ -13,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,10 +38,15 @@ import co.com.springboot.Repository.SubCategoriaRepository;
 import co.com.springboot.Repository.UsuarioRepository;
 import co.com.springboot.domain.Anuncio;
 import co.com.springboot.domain.Usuario;
+import co.com.springboot.service.UserDetailsServiceImpl;
 
 
 
 
+
+
+
+@SuppressWarnings("unused")
 @Controller
 public class AnuncioController {
 
@@ -56,10 +65,9 @@ public class AnuncioController {
 	@Autowired
 	private AuthorityRepository authorityRepository;
 	
-
-
+	@Autowired
+	private UserDetailsServiceImpl userDetails;
 	
-
 
 	@GetMapping("/user/anuncio")
 	   public String anuncioForm(Anuncio anuncio,Model model) {
@@ -67,14 +75,13 @@ public class AnuncioController {
 			
 	       return "Anuncio/add-anuncio";
 	  }
-	
-	
+
 
 	@GetMapping("/anuncioChat/{idAnuncio}")
 			public String anuncioChat(@PathVariable("idAnuncio") int id, Model model) {
 			Anuncio anuncio = anuncioRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid anuncio Id:" + id));
 			model.addAttribute("subcategorias", subCatRepo.findAll() );
-			
+			model.addAttribute("anuncios", anuncioRepo.findAll() );
 			model.addAttribute("anuncio", anuncio);
 			return "Anuncio/indexAnuncioChat";
 		}
@@ -84,6 +91,8 @@ public class AnuncioController {
 	
 	@GetMapping("/user/ListAnuncio")
 	   public String anuncio(Model model) {
+		
+		 //List<Anuncio> anuncio = anuncioRepo.findAllAnuncioByUsuario(userDetails.getAppUser());
 
 	      model.addAttribute("anuncios", anuncioRepo.findAll() );
 	      model.addAttribute("subcategorias", subCatRepo.findAll() );
@@ -102,7 +111,10 @@ public class AnuncioController {
 	    	return "Anuncio/add-anuncio";
 	     }
 	  
-	 
+	    
+	    
+	    anuncio.setUsuario(userDetails.getAppUser());
+	    
 	    
 	   try {
 	    	Map uploadResult= cloudinary.upload(file.getBytes(), ObjectUtils.asMap("resourcetype","auto"));
@@ -137,10 +149,7 @@ public class AnuncioController {
 
 	         	return "Anuncio/update-anuncio";
 	        }
-	        /**Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	        UserDetails userDetail =  (UserDetails) auth.getPrincipal();
-	        Usuario usuario = usuarioRepo.findByEmail(userDetail.getUsername());
-	        anuncio.setUsuario(usuario);*/
+	        anuncio.setUsuario(userDetails.getAppUser());
 	        
 	        try {
 		    	Map uploadResult= cloudinary.upload(file.getBytes(), ObjectUtils.asMap("resourcetype","auto"));

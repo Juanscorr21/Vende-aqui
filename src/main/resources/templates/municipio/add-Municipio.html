@@ -48,7 +48,7 @@
                             <span class="input-group-text" id="icono-categoria"><i class="fas fa-map-marker-alt"></i></span>
                         </div>
                         <select class="form-control" th:field="*{departamento}" name="departamento">
-                            <option th:fragment="departamento"  th:each="departamento : ${departamentos}" th:value="${departamento}" th:text="${departamento}">Departamento
+                            <option th:fragment="departamentos"  th:each="departamento : ${departamentos}" th:value="${departamento}" th:text="${departamento}">Departamento
                             </option>
                         </select>
                     </div>                   

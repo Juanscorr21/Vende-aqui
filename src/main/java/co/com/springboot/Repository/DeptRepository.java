@@ -17,6 +17,6 @@ public interface DeptRepository extends CrudRepository<Departamento, Integer> {
 	List<String> findAllPais();
 	
 	@Query("SELECT d.nombre FROM Departamento d WHERE d.pais.nombre = :pais")
-	List<String> findAllPaisByNombre(@Param("pais")  String pais);
+	List<String> findAllDepartamentoByPais(@Param("pais")  String pais);
 	
 }

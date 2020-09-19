@@ -42,14 +42,15 @@ public class MunicipioController {
 	   public String inicioFormularioMunicipio(Municipio municipio,Model model) {	  
 		   List<String> pais = deptRepo.findAllPais();
 		   model.addAttribute("paises", pais);
+		   
 	       return "municipio/add-Municipio";
 	  }
 	
-	@RequestMapping(value = "/inicioMunicipio/ajax/paises")
-	public @ResponseBody String ajaxDept(@RequestParam("pais") String pais,Model model) {
-		List<String> departamentos =  deptRepo.findAllPaisByNombre(pais);
+	@RequestMapping( "/inicioMunicipio/ajax/paises")
+	public  String ajaxDept(@RequestParam("pais") String pais,Model model) {
+		List<String> departamentos =  deptRepo.findAllDepartamentoByPais(pais);
 		model.addAttribute("departamentos", departamentos);
-		return "municipio/add-Municipio :: departamento";
+		return "municipio/add-Municipio :: departamentos";
 	}
 	
 

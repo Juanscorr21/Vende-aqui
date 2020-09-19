@@ -9,7 +9,7 @@
         th:href="@{/css/styles-banner.css}">
  </head>
  <body>
- 	<div> <div th:insert="fragment/Frames combo  :: menu" ></div></div>
+ 	<div th:insert="fragment/Frames combo  :: menu" ></div>
   
     <!--<div th:insert="fragment/Frames combo  :: menuUser"  ></div>  <security:authorize access="hasAuthority('ADMIN')">
        <div th:insert="fragment/Frames combo  :: menuAdmin" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"></div>-->
@@ -26,7 +26,7 @@
     <h1 class="text-center" style="background: #6bc82d;color: #ffffff;margin-top: 1%;"  th:if="${anuncios.isEmpty()}">No Hay Anuncios Publicados</h1>
   
     <div th:if="${!anuncios.isEmpty()}">
-    
+    <div th:fragment="anuncios">
     <h1 class="text-center" style="background: #6bc82d;color: #ffffff;margin-top: 1%;">Anuncios Publicados</h1>
 
     <div class="col-12" style="margin-top: 1%;">
@@ -50,11 +50,12 @@
 
 
                     <div class="text-center">
-                        <a th:href="@{/anuncioChat/{idAnuncio}(idAnuncio=${anuncio.idAnuncio})}" class="btn btn-outline-primary" style="margin-bottom:5%;">Ver</a>
+                        <a th:href="@{/anuncioChat/{idAnuncio}(idAnuncio=${anuncio.idAnuncio})}" class="btn btn-outline-primary" style="margin-bottom:5%;">Ver Anuncio</a>
                     </div>
                 </div>
             </div> 
    		 </div>    
+    </div>
     </div>
     </div>
 

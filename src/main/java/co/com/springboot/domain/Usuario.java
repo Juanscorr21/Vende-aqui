@@ -70,7 +70,7 @@ public class Usuario implements Serializable {
 	
 	
 	@NotBlank(message = "Este campo es obligatorio")
-	@Size(min=3,max=15,message = "La direccion debe contener minimo 7 carateres y maximo 15")
+	@Size(min=3,max=20,message = "La direccion debe contener minimo 7 carateres y maximo 20")
 	private String descripcion;
 	
 	@Transient

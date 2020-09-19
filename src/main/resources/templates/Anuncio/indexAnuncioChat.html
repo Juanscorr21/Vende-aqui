@@ -10,34 +10,37 @@
     <div class="row col"  style="padding-left:1;padding-right: 0" th:each="anuncio : ${anuncio}"  th:object="${anuncio}">
 
 
-    <div class="col-sm-12 col-lg-6" style="margin-bottom: 2%;padding-right: 0">
+    <div class="col-sm-12 col-lg-7" style="margin-bottom: 2%;padding-right: 0">
       <div id="foto">
-        <img th:src="${anuncio.urlFoto}"  style="width: 100%; height: auto;" />
+	      <h1 class="card-title text-center"  style="color:#2086dad0;font-size: 40px " th:text="${anuncio.titulo}"> </h1>
+	        <img th:src="${anuncio.urlFoto}"  style="width: 100%; height: auto;" />
+	        
+	        <div class="card" style=" border: solid 1px #47a1ebd0;border-top: none;">
+	        
+	    
+	        <div class="card-body">
+	            <h3 class="card-subtitle mb-2 "><span style="margin-right: 2%;"><i
+	                class="fas fa-dollar-sign"></i></span><samp th:text="${anuncio.precio}"></samp></h3>
+	          <h5 class="card-subtitle mb-2 text-muted" style="margin-top: 0%;"><span>Descripcion</h5>
+	          <p class="card-text" style="margin-top: 2%;font-size: 18px;" th:text="${anuncio.descripcion}">
+	            </p>
+	        </div>
+	      </div>
       </div>
-      
+
     </div>
-    <div class="col-sm-12 col-lg-6" style="margin-bottom: 1%">
+    <div class="col-sm-12 col-lg-5" style="margin-bottom: 1%;padding-right: 0">
      
-
-      <div class="card" id="card">
-        <div class="card-body">
-          <h1 class="card-title text-center" th:text="${anuncio.titulo}"> </h1>
-          <h3 class="card-subtitle mb-2 "><span style="margin-right: 2%;"><i
-                class="fas fa-dollar-sign"></i></span><samp th:text="${anuncio.precio}"></samp></h3>
-          <h5 class="card-subtitle mb-2 text-muted" style="margin-top: 2%;"><span>Descripcion</h5>
-          <p class="card-text" style="margin-top: 2%;font-size: 18px;" th:text="${anuncio.descripcion}">
-            </p>
-
-          <div class="card" id="card">
+		<div class="card" id="card">
             <div class="card-body">
               <h2 class="card-title text-center" style="color:#2086dad0; "> Datos Del Vendedor</h2>
               <hr style="background-color:rgba(39, 170, 46, 0.822); height: 3px; margin-top: 15;margin-bottom: 5%;">
               <div class="row">
-                <div class="col-6">
+                <div class="col-sm-12 col-lg-12">
                   <h5 class="card-subtitle mb-2 text-muted" style="margin-top: 2%;">Telefono</h5>
-                  <h5 class="card-subtitle mb-2 " style="margin-top: 2%;">311334633</h5>
+                  <h5 class="card-subtitle mb-2 " style="margin-top: 2%;">3113346331111111111111111111</h5>
                 </div>
-                <div class="col-6">
+                <div class="col-sm-12 col-lg-12">
                   <h5 class="card-subtitle mb-2 text-muted" style="margin-top: 2%;">Correo</h5>
                   <h5 class="card-subtitle mb-2 " style="margin-top: 2%;">luismiguelo@gmail.com</h5>
                 </div>
@@ -45,18 +48,19 @@
               <h5 class="card-subtitle mb-2 text-muted" style="margin-top: 2%;">Nombre Completo</h5>
               <h5 class="card-subtitle mb-2 " style="margin-top: 2%;">Luis miguel de los angeles</h5>
 
-              <button type="button " class="btn btn-outline-success"
+             
+                 <button type="button " class="btn btn-outline-success"
                 style="margin-left: 21%;margin-top: 5%;width: 60%;">Enviar Mensaje</button>
 
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-     
-      </div>
-
   
+    	</div>
+     
+     </div>
+    
+    
+    <div th:insert="Usuario/index  :: anuncios" ></div>
   
    
 

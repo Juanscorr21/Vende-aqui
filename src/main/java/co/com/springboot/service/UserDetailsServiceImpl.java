@@ -1,7 +1,7 @@
 package co.com.springboot.service;
 
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,19 +16,22 @@ import org.springframework.stereotype.Service;
 import co.com.springboot.Repository.UsuarioRepository;
 import co.com.springboot.domain.Authority;
 import co.com.springboot.domain.Usuario;
+import lombok.Data;
 
 @Service
+@Data
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    UsuarioRepository	userRepository;
+    UsuarioRepository userRepository;
 	
+   public   Usuario appUser;
     @Override
-     public UserDetails loadUserByUsername(String NombreUsuario) throws UsernameNotFoundException {
+     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
      //Buscar el usuario con el repositorio y si no existe lanzar una exepcion
-     Usuario appUser = 
-                 userRepository.findByNombreUsuario(NombreUsuario).orElseThrow(() -> new UsernameNotFoundException("No existe usuario"));
+       appUser = 
+                 userRepository.findByNombreUsuario(username);
 		
     //Mapear nuestra lista de Authority con la de spring security 
     List grantList = new ArrayList();

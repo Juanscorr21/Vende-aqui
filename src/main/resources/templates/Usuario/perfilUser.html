@@ -15,30 +15,30 @@
          
 
             <div class="content ">
-                <div class="left ">
+                <div class="left "  th:each="usuario : ${usuarios}">
                     <div class="Perfil-centrado titulo">
                         <h1 class="title ">Mi Perfil</h1>
                                          
                     </div>
                     <div>
                         <h4 class="Email" style="margin-top: 6%;">Nombre Completo</h4>
-                        <p class="text">nombre</p>
+                        <p class="text" th:text="${usuario.nombre}">nombre</p>
                     </div>
                     <div>
                         <h4 class="Email">Nombre Usuario</h4>
-                        <p class="text">nombre usuario</p>
+                        <p class="text" sec:authentication="name">nombre usuario</p>
                     </div>
                     <div>
                         <h4 class="Email">Mi Correo</h4>
-                        <p class="text">corre@gmail.com</p>
+                        <p class="text" th:text="${usuario.email}">corre@gmail.com</p>
                     </div>
                     <div>
                         <h4 class="address">Direccion</h4>
-                        <p class="text">direccion.</p>
+                        <p class="text" th:text="${usuario.descripcion}">direccion.</p>
                     </div>
                     <div>
                         <h4 class="phone">Telefono</h4>
-                        <p class="text">311311311.</p>
+                        <p class="text" th:text="${usuario.telefono}">311311311.</p>
                     </div>
                    
                     <div class="buttons-wrap" style="margin-top: 6%;">

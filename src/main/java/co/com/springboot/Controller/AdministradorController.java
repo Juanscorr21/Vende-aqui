@@ -1,5 +1,9 @@
 package co.com.springboot.Controller;
 
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
+
 import javax.validation.Valid;
 
 
@@ -12,62 +16,115 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import co.com.springboot.Repository.AdminRepository;
+import co.com.springboot.Repository.AuthorityRepository;
+import co.com.springboot.Repository.UsuarioRepository;
 import co.com.springboot.domain.Administrador;
+import co.com.springboot.domain.Authority;
+import co.com.springboot.domain.Usuario;
+import co.com.springboot.util.Passgenerator;
 
 
 @Controller
 public class AdministradorController {
 
 	@Autowired
-	private AdminRepository  adminRepo;
+	private UsuarioRepository adminRepo;
+
+	@Autowired
+	private AuthorityRepository authorityRepository;
+	
+	 @Autowired
+	 Passgenerator passgenerator;
+	
 	/*
-	@GetMapping("/inicioAdminF")
+	@GetMapping("/listaAdmin")
 	public String inicoFomularioAdministradorF(Administrador admin) {
 	       return "administrador/indexAdmin";
 	  }
-	@GetMapping("/inicioAdminA")
-	public String inicoFomularioAdministradorA(Administrador admin) {
-	       return "administrador/update-admin";
-	  }*/
-	@GetMapping("/inicioAdmin")
-	public String inicoFomularioAdministrador(Administrador admin) {
+	*/
+	@GetMapping("admin/inicioAdmin")
+	public String inicoFomularioAdministrador(Usuario usuario,Model model) {
 	       return "administrador/add-admin";
 	  }
-	@PostMapping("/agregarAdmin")
-	  public String agregarAdmin(@Valid Administrador admin, BindingResult resultado, Model model) {
+	@PostMapping("admin/agregarAdmin")
+	  public String agregarAdmin(@Valid Usuario usuario,BindingResult resultado, Model model) {
+		
+		/**Optional<Usuario> nombreExist = adminRepo.findByNombreUsuario(usuario.getNombreUsuario());		
+		if(nombreExist.isPresent()) {
+						
+				model.addAttribute("nombreUsuario","Nombre de usuario ya esta en uso");				
+				  return "administrador/add-admin";
+			
+			}*/
+		
+		if (!usuario.getContrasena().equals(usuario.getConficontrasena())) {			
+			model.addAttribute("errorPassword", "sdsfsd");
 
-	    if (resultado.hasErrors()) {
-	            return "administrador/add-admin";
+			  return "administrador/add-admin";
 	     }
-	        
-	    adminRepo.save(admin);
-	        model.addAttribute("admin", adminRepo.findAll());
-	        return "administrador/indexAdmin";
+
+	 	if (resultado.hasErrors()) {
+
+	 		  return "administrador/add-admin";
+	       
 	    }
+	 	
+	 	 Authority autorizacion= authorityRepository.findByAuthority("ROLE_ADMIN");
+       
+	        Set<Authority> authority= new HashSet<Authority>();
+	        authority.add(autorizacion);
+	        
+	        usuario.setAuthority(authority);
+	            
+	        // El String que mandamos al metodo encode es el password que queremos
+			// encriptar.
+	        usuario.setContrasena(passgenerator.enciptarPassword(usuario.getContrasena()));
+	        
+	        System.out.println("este es el usuario que vamos a registrar"+ usuario.toString());
+		   
+	        adminRepo.save(usuario);
+			model.addAttribute("usuarios", adminRepo.findAll());
+			 return "redirect:/";
+	}
 	    
 	 
-	 @GetMapping("/editAdmin/{idAdmin}")
-	 public String editAdmin(@PathVariable("idAdmin") int id, Model model) {
-		 Administrador admin = adminRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid administrador Id:" + id));
-	        model.addAttribute("administrador", admin);
-	        return "administrador/update-admin";
-	    }
+	 @GetMapping("admin/editAdmin/{idAdmin}")
+	 public String editU(@PathVariable("dni") int dni, Model model) {
+		 Usuario admin = adminRepo.findById(dni).orElseThrow(() -> new IllegalArgumentException("Id: " + dni + " del usuario es invalido"));
+		 model.addAttribute("usuario", admin);
+	     return "administrador/update-admin";
+	
+	 }
 	 
-	 @PostMapping("/actualizarAdmin/{idAdmin}")
-	    public String actulizarAdministrador(@PathVariable("idAdmin") int id, @Valid Administrador admin, BindingResult resultado, Model model) {
+	 @PostMapping("admin/actualizarAdmin/{idAdmin}")
+	    public String actulizarAdministrador(@PathVariable("idAdmin") int id, @Valid Usuario admin, BindingResult resultado, Model model) {
+		 
+		 	/**Optional<Usuario> nombreExist = adminRepo.findByNombreUsuario(admin.getNombreUsuario());		
+			if(nombreExist.isPresent()) {
+							
+					model.addAttribute("nombreUsuario","Nombre de usuario ya esta en uso");				
+					 return "administrador/update-admin";
+				
+				}*/
+			
+			if (!admin.getContrasena().equals(admin.getConficontrasena())) {			
+				model.addAttribute("errorPassword", "sdsfsd");
+
+				 return "administrador/update-admin";
+		     }
 	        if (resultado.hasErrors()) {
-	        	admin.setIdAdmin(id);
+	        	admin.setDni(id);
 	            return "administrador/update-admin";
 	        }
 	        
 	        adminRepo.save(admin); 
 	        model.addAttribute("administradores", adminRepo.findAll());
-	        return "administrador/indexAdmin";
+	        return "redirect:/";
 	    }
 	 
-	 @GetMapping("/eliminarAdmin/{idAdmin}")
+	 @GetMapping("admin/eliminarAdmin/{idAdmin}")
 	    public String eliminarAdministrador(@PathVariable("idAdmin") int id, Model model) {
-		 Administrador admin = adminRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid administrador Id:" + id));
+		 Usuario admin = adminRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid administrador Id:" + id));
 		 adminRepo.delete(admin);
 	        model.addAttribute("administradores", adminRepo.findAll());
 	        return "administrador/indexAdmin";

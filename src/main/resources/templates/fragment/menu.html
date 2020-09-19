@@ -1,9 +1,10 @@
 <!-- framentos con  el menu Admin de la plataforma-->    
 <div th:fragment="menu">
 
- <div class="wrapper " style="padding: 0%;">
+ <div class="wrapper " style="padding: 0%;background: ">
         <!-- Sidebar  -->
-        <nav id="sidebar">
+      
+        <nav  id="sidebar" >
             <div id="dismiss">
                 <i class="fas fa-arrow-left"></i>
             </div>
@@ -51,103 +52,98 @@
                         <li sec:authorize="isAuthenticated()">
                             <a href="/user/ListAnuncio">Mis Anuncios</a>
                         </li>
+                        
+                        <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                            <a href="/admin/inicioAdmin">Agregar Administrador</a>
+                        </li>
                     </ul>
                 </li>
                 
+                  <li>
+                    <a href="/user/anuncio">
+                        <i class="fas fa-shopping-cart"></i>
+                        Publicar</a>
+                </li>
+                
+                
+                  <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                
+                
+
+                    <a href="#MenuLitasCatg" data-toggle="collapse" aria-expanded="false">
+                      <i class="fas fa-clipboard-list"></i>
+                         Listas De Categorias</a>
+                    <ul class="collapse list-unstyled" id="MenuLitasCatg">
+                        	<li>
+                             <a href="/admin/c">Categorias</a>
+                         	</li>
+                         	<li>
+                               <a href="/admin/listaSubcategoria">Subcategorias</a>
+                            </li>
+                     
+                    </ul>
+                </li>
+                
+                 <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                
+                
+
+                    <a href="#MenuLitasPaises" data-toggle="collapse" aria-expanded="false">
+                      <i class="fas fa-clipboard-list"></i>
+                         Listas De Paises</a>
+                    <ul class="collapse list-unstyled" id="MenuLitasPaises">
+                        	<li>
+                                <a href="/listaPaises">Lista Paises</a>
+                            </li>
+                            <li>
+                                <a href="/departamento/ListaDept">Lista Departamentos</a>
+                            </li>
+                            <li>
+                                <a href="/listaMunicipios">Lista Municipios</a>
+                            </li>
+                     
+                    </ul>
+                </li>
+                
+                
                 <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                
+                
+
                     <a href="#menuCategorias" data-toggle="collapse" aria-expanded="false">
-                        <i class="fas fa-tags"></i>
-                        Gestionar Categorias</a>
-
+                    <i class="fas fa-tags"></i>
+                         Gestionar Categorias</a>
                     <ul class="collapse list-unstyled" id="menuCategorias">
-                        <li>
-
-                            <a href="#categorias1" data-toggle="collapse" aria-expanded="false" id="categorias2">
-                                <i class="fas fa-tag"></i>
-                                Categorias</a>
-                            <ul class="collapse list-unstyled" id="categorias1">
-                            	<li>
-                                    <a href="/admin/c">Lista Categorias</a>
-                                </li>
-                                <li>
-                                    <a th:href="@{/admin/registroCategoria}">Agregar Categoria</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-
-                            <a href="#Subcategorias" data-toggle="collapse" aria-expanded="false" id="categorias2">
-                                <i class="fas fa-tag"></i>
-                                Subcategorias</a>
-                            <ul class="collapse list-unstyled" id="Subcategorias">
-                            	<li>
-                                    <a href="/admin/listaSubcategoria">Lista Subcategorias</a>
-                                </li>
-                                <li>
-                                    <a  th:href="@{/admin/registroSubcategoria}">Agregar Subcategoria</a>
-                                </li>
-     
-                            </ul>
-                        </li>
+                        	<li>
+                               <a th:href="@{/admin/registroCategoria}">Agregar Categoria</a>
+                           </li>
+                         	<li>
+                               <a  th:href="@{/admin/registroSubcategoria}">Agregar Subcategoria</a>
+                           </li>
+                     
                     </ul>
                 </li>
+                
 
- 				<li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">             
                     <a href="#menuPais" data-toggle="collapse" aria-expanded="false">
-                        <i class="fas fa-map"></i>
-                        Gestionar Paises</a>
-
+                 <i class="fas fa-map"></i>
+                         Gestionar Paises</a>
                     <ul class="collapse list-unstyled" id="menuPais">
-                        <li>
-
-                            <a href="#pais" data-toggle="collapse" aria-expanded="false" id="categorias2">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Paises</a>
-                            <ul class="collapse list-unstyled " id="pais">
-                            	<li>
-                                    <a href="/listaPaises">Lista Paises</a>
-                                </li>
-                                <li >
-                                    <a href="/inicioPais" >Agregar Pais</a>
-                                </li>                             
-                            </ul>
-                        </li>
-
-                        <li>
-
-                            <a href="#Departamentos" data-toggle="collapse" aria-expanded="false" id="categorias2">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Departamentos</a>
-                            <ul class="collapse list-unstyled " id="Departamentos">
-                            	<li>
-                                    <a href="/departamento/ListaDept">Lista Departamentos</a>
-                                </li>
-                                <li>
-                                    <a href="/departamento/iniciodept" >Agregar Departamento</a>
-                                </li>     
-                            </ul>
-                        </li>
-
-                        <li>
-
-                            <a href="#Municipios" data-toggle="collapse" aria-expanded="false" id="categorias2">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Municipios</a>
-                            <ul class="collapse list-unstyled " id="Municipios">
-                                <li>
-                                    <a href="/listaMunicipios">Lista Municipios</a>
-                                </li>
-                                <li>
-                                    <a href="/inicioMunicipio" >Agregar Municipio</a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-
+							<li >
+                               <a href="/inicioPais" >Agregar Pais</a>
+                           </li>
+                           
+                           <li >
+                               <a href="/departamento/iniciodept" >Agregar Departamento</a>
+                           </li>
+                           <li >
+                               <a href="/inicioMunicipio" >Agregar Municipio</a>
+                           </li>
+                     
                     </ul>
                 </li>
+              
                 
 
                 <li>
@@ -168,13 +164,7 @@
                         <i class="fas fa-comments"></i>
                         Mensajes</a>
                 </li>
-
-                <li>
-                    <a href="/user/anuncio">
-                        <i class="fas fa-shopping-cart"></i>
-                        Publicar</a>
-                </li>
-                        
+            
 
                 <li>
                     <div class="row">
@@ -212,7 +202,7 @@
 	        <nav class="navbar  navbar-menu sticky-top" style="background: #ffffff;margin-bottom: 0%;position: inherit;">
 	
 	            <a href="/">
-	                <img src="static/img/logo.jpg" class="card-img-top" th:src="@{/img/logo.jpg}" style="width: 200px;">
+	                <img src="static/img/logo.png" class="card-img-top" th:src="@{/img/logo.png}" style="width: 200px;">
 	            </a>
 	     	
 			
@@ -222,9 +212,10 @@
 	        </nav>
         <hr style="background-color:#1c89d1; height: 3px; padding: 0 ;margin: 0" >
         
-        
+  
 
     </div>
+    
     <!-- Page Content  -->
 
     <div class="overlay"></div>

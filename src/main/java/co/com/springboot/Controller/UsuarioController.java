@@ -1,5 +1,6 @@
 package co.com.springboot.Controller;
 
+import java.security.Principal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -52,8 +53,10 @@ public class UsuarioController {
 	  }
 
 	@GetMapping("/inicioUser")
-	   public String inicoFomu(Usuario usuario, Model model) {
-		model.addAttribute("usuarios", userRepo.findAll());
+	   public String inicoFomu(Principal pricipal, Model model) {
+		
+		Usuario usuario = userRepo.findAll(pricipal.getName());
+		model.addAttribute("usuario", usuario);
 	       return "Usuario/perfilUser";
 	  }
 
@@ -127,10 +130,7 @@ public class UsuarioController {
 			
 			}*/
 			
-		 if (!usuario.getContrasena().equals(usuario.getConficontrasena())) {			
-				model.addAttribute("errorPassword", Mensaje);
-			    return new ModelAndView("Usuario/add-usuario2");
-		     }	
+			
 		 
 	        if (resultado.hasErrors()) {
 	        	usuario.setDni(dni);

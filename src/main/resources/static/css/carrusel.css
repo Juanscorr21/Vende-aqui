@@ -138,6 +138,7 @@ input[type="radio"]{
 }
 .wrapper1 .form-container{
   width: 100%;
+  
   overflow: hidden;
 }
 .form-container .form-inner{

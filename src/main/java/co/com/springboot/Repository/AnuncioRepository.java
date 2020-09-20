@@ -2,13 +2,14 @@ package co.com.springboot.Repository;
 
 import java.util.List;
 
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import co.com.springboot.domain.Anuncio;
-import co.com.springboot.domain.Usuario;
+
 
 @Repository
 public interface AnuncioRepository extends CrudRepository<Anuncio, Integer> {
@@ -17,7 +18,9 @@ public interface AnuncioRepository extends CrudRepository<Anuncio, Integer> {
 	List<Anuncio> findByTitulo(String titulo);
 	
 	
-	@Query("SELECT a FROM Anuncio a WHERE a.usuario = :usuario")
-	List<Anuncio> findAllAnuncioByUsuario(@Param("usuario")  Usuario usuario);
+	
+	
+	@Query("SELECT a FROM Anuncio a WHERE a.usuario.nombreUsuario = :nombreUsuario")
+	List<Anuncio> findAllAnuncioByUsuario(@Param("nombreUsuario")  String nombreUsuario);
 	
 }

@@ -15,18 +15,20 @@
          
 
             <div class="content ">
-                <div class="left "  th:each="usuario : ${usuarios}">
+                <div class="left "  th:each="usuario : ${usuario}">
                     <div class="Perfil-centrado titulo">
                         <h1 class="title ">Mi Perfil</h1>
                                          
                     </div>
                     <div>
                         <h4 class="Email" style="margin-top: 6%;">Nombre Completo</h4>
-                        <p class="text" th:text="${usuario.nombre}">nombre</p>
+                        <p class="text" > <span th:text="${usuario.nombre}"> </span> <span th:text="${usuario.apellido}"> </span> </p>
                     </div>
+                    
+                    
                     <div>
                         <h4 class="Email">Nombre Usuario</h4>
-                        <p class="text" sec:authentication="name">nombre usuario</p>
+                        <p class="text"th:text="${usuario.nombreUsuario}">nombre usuario</p>
                     </div>
                     <div>
                         <h4 class="Email">Mi Correo</h4>
@@ -43,7 +45,7 @@
                    
                     <div class="buttons-wrap" style="margin-top: 6%;">
                         <div class="follow-wrap">
-                            <a href="#" class="follow">Editar Perfil</a>
+                            <a th:href="@{/user/editU/{dni}(dni=${usuario.dni})}" class="follow">Editar Perfil</a>
                         </div>
                        
                     </div>

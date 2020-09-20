@@ -2,6 +2,7 @@ package co.com.springboot.Controller;
 
 
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 
@@ -90,11 +91,13 @@ public class AnuncioController {
 
 	
 	@GetMapping("/user/ListAnuncio")
-	   public String anuncio(Model model) {
+	   public String anuncio(Model model,Principal principal) {
 		
-		 //List<Anuncio> anuncio = anuncioRepo.findAllAnuncioByUsuario(userDetails.getAppUser());
+		//UserDetails user = 
+		
+		 List<Anuncio> anuncio = anuncioRepo.findAllAnuncioByUsuario(principal.getName());
 
-	      model.addAttribute("anuncios", anuncioRepo.findAll() );
+	      model.addAttribute("anuncios", anuncio );
 	      model.addAttribute("subcategorias", subCatRepo.findAll() );
 	  	  model.addAttribute("usuarios", usuarioRepo.findAll() );
 	      return "Anuncio/indexAnuncio";

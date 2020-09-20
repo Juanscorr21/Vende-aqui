@@ -16,10 +16,10 @@ import co.com.springboot.domain.Usuario;
 public interface UsuarioRepository  extends CrudRepository<Usuario, Integer>{
 	//Usuario findByNombreUsuario1(String username);
 	Usuario findByDni(int id_usuario);
-	Usuario findByNombreUsuario(String username);
+	Usuario  findByNombreUsuario(String username);
 	String findAllByEmail(String string);
 	
-	@Query("SELECT u FROM Usuario u WHERE u.nombre = :nombre")
-	Usuario findAll(@Param("nombre")  Usuario usuario);
+	@Query("SELECT u FROM Usuario u WHERE u.nombreUsuario = :nombreUsuario")
+	Usuario findAll(@Param("nombreUsuario")  String nombreUsuario);
 
 }

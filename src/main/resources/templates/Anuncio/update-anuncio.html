@@ -67,18 +67,7 @@
                           </div>
                         
                       </div>
-                      <div class="col-sm-12  col-md-6 col-lg-6 form-group" id="user-group">
-
-                          <label for="nombre" style="font-size: 20px;margin-left: 2%;">Contacto: </label>
-                          <div class="input-group  ">
-                              <div class="input-group-prepend">
-                                  <span class="input-group-text" id="icono-categoria"> <i class="fas fa-address-book"></i></span>
-                              </div>
-                              <input type="text" class="form-control"  th:field="*{contacto}" placeholder="Ingrese Contacto"
-                                  required="required" >
-                          </div>
-                           <div th:if="${#fields.hasErrors('contacto')}" th:errors="*{contacto}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
-                      </div>
+                     
                   </div>
                   <div class="row text-left" style="margin-top: 0%;">
                       <div class="col-sm-12 col-md-6 col-lg-6 form-group" id="user-group">                            

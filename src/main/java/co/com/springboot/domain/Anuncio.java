@@ -35,8 +35,7 @@ public class Anuncio implements Serializable {
 	
 	
 	private String urlFoto;
-	@NotBlank(message = "Este campo es Obligatorio")
-	private String contacto;
+
 	
 	@NotBlank(message = "Este campo es Obligatorio")
 	@Size(min=1,max=16, message = "El precio debe tener minimos 3 caracteres y maximo 10" )

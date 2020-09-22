@@ -35,18 +35,20 @@ public class MenuController {
 	  }
 	
 	@GetMapping("/")
-	   public String inicio(Model model,String categoria) {
-		List<String> categorias = subcategoriaRepo.findAllCategoria();
+	   public String inicio(Model model) {
+
 
 	
 		model.addAttribute("anuncios", anuncioRepo.findAll());
-		model.addAttribute("categorias", categorias);
+		model.addAttribute("categorias", categoriaRepo.findAll());
 	
 	       return "Usuario/index";
 	  }
 	
 
 	
+	
+
 
 		
 	

@@ -76,13 +76,23 @@ public class AnuncioController {
 			
 	       return "Anuncio/add-anuncio";
 	  }
+	
+	@GetMapping("/findByTitulo")
+	public String buscarPorTituloAnuncio(String titulo, Model model) {
+	
+			List<Anuncio> listaAnuncio = anuncioRepo.findByTitulo("%"+titulo.toUpperCase()+"%","%"+titulo.toUpperCase()+"%","%"+titulo.toUpperCase()+"%");
+			model.addAttribute("anuncios", listaAnuncio);
+
+			return "Usuario/index";
+	}
 
 
 	@GetMapping("/anuncioChat/{idAnuncio}")
 			public String anuncioChat(@PathVariable("idAnuncio") int id, Model model) {
 			Anuncio anuncio = anuncioRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid anuncio Id:" + id));
+			List<Anuncio> anuncios =anuncioRepo.findAllAnuncioBySubcategoria(anuncio.getSubCategoria().getNombre());
 			model.addAttribute("subcategorias", subCatRepo.findAll() );
-			model.addAttribute("anuncios", anuncioRepo.findAll() );
+			model.addAttribute("anuncios", anuncios );
 			model.addAttribute("anuncio", anuncio);
 			return "Anuncio/indexAnuncioChat";
 		}
@@ -93,7 +103,7 @@ public class AnuncioController {
 	@GetMapping("/user/ListAnuncio")
 	   public String anuncio(Model model,Principal principal) {
 		
-		//UserDetails user = 
+
 		
 		 List<Anuncio> anuncio = anuncioRepo.findAllAnuncioByUsuario(principal.getName());
 

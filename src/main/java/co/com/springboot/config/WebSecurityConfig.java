@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers(resources).permitAll().antMatchers("/", "/inicioU","/signUp","/agregarU","/login","/inicioUser","/eliminarU/{dni}","/anuncioChat/{idAnuncio}").permitAll()
+		http.authorizeRequests().antMatchers(resources).permitAll().antMatchers("/", "/inicioU","/signUp","/agregarU","/login","/inicioUser","/eliminarU/{dni}","/anuncioChat/{idAnuncio}","/findByTitulo").permitAll()
 				.antMatchers("/admin/*").access("hasRole('ADMIN')").antMatchers("/user/*")
 				.access("hasRole('USER') or hasRole('ADMIN')").anyRequest().authenticated().and().formLogin()
 				.loginPage("/signUp").permitAll().defaultSuccessUrl("/").failureUrl("/login?error=true")

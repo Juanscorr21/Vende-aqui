@@ -33,7 +33,7 @@ public class Anuncio implements Serializable {
 	@Size(min=3,max=25, message = "El titulo debe tener minimos 3 caracteres" )
 	private String titulo;
 	
-	
+	@NotBlank(message = "Este campo es Obligatorio")
 	private String urlFoto;
 
 	

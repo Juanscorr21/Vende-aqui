@@ -34,8 +34,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="icono-categoria"><i class="fas fa-map-marker-alt"></i></span>
                         </div>
-                        <select class="form-control" th:field="*{departamento.pais}" required="required"> 
-                            <option th:each="pais : ${paises}" th:value="${pais}" th:text="${pais}" >Pais
+                        <select class="form-control" th:field="*{departamento.pais}" required="required" name="pais"> 
+                            <option th:each="pais : ${paises}" th:value="${pais}" th:text="${pais}"  >Pais
                             </option>
                         </select>
                     </div>

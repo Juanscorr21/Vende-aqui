@@ -1,7 +1,7 @@
 <!-- framentos con  el menu Admin de la plataforma-->    
 <div th:fragment="menu">
 
- <div class="wrapper " style="padding: 0%;background: ">
+ <div class="wrapper " style="padding: 0%;background: " th:switch="${categorias}">
         <!-- Sidebar  -->
       
         <nav  id="sidebar" >
@@ -15,11 +15,12 @@
 
             <nav class="navbar navbar-light bg-light" style="margin-bottom: 1%;">
                 <a class="navbar-brand"></a>
-                <form class="form-inline">
+                <form class="form-inline" th:action="@{/findByTitulo}" method="get">
                     <input class="form-control mr-sm-1 " type="search" placeholder="Buscar" aria-label="Search"
-                        style="width: 285px;margin-left: -1%;">
+                        style="width: 285px;margin-left: -1%;" name="titulo">
                     <button class="btn btn-outline-primary " type="submit"><i class="fas fa-search"></i></button>
                 </form>
+           
             </nav>
 
             <ul class="list-unstyled components" style="margin-top:2rem">
@@ -146,19 +147,6 @@
               
                 
 
-                <li>
-
-                    <a href="#categorias" data-toggle="collapse" aria-expanded="false">
-                        <i class="fas fa-tags"></i>
-                        Categorias</a>
-                    <ul class="collapse list-unstyled" id="categorias">
-                        <li th:each="categoria : ${categorias}">
-                            <a  th:text="${categoria.nombre}">categorias</a>
-                        </li>
-
-                    </ul>
-                </li>
-
                 <li sec:authorize="isAuthenticated()">
                     <a href="#">
                         <i class="fas fa-comments"></i>
@@ -205,10 +193,11 @@
 	                <img src="static/img/logo.png" class="card-img-top" th:src="@{/img/logo.png}" style="width: 200px;">
 	            </a>
 	     	
-			
+			<form th:action="@{/menu}" method="get">
 	            <button type="button" id="sidebarCollapse" class="btn" >
 	                <span class="fas fa-bars">
 	            </button>
+	            </form>
 	        </nav>
         <hr style="background-color:#1c89d1; height: 3px; padding: 0 ;margin: 0" >
         

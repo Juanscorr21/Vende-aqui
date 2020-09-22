@@ -48,9 +48,10 @@
               <h5 class="card-subtitle mb-2 text-muted" style="margin-top: 2%;">Nombre Completo</h5>
               <h5 class="card-subtitle mb-2 " style="margin-top: 2%;" ><span th:text="${anuncio.usuario.nombre}"> </span> <span th:text="${anuncio.usuario.apellido}"> </span></h5>
 
-             
-                 <button type="button " class="btn btn-outline-success"
-                style="margin-left: 21%;margin-top: 5%;width: 60%;">Enviar Mensaje</button>
+             <div class="text-center">
+                        <a th:href="@{https://api.whatsapp.com/send?phone={phone}(phone=${anuncio.usuario.telefono})}" target="_blank" class="btn btn-outline-success" style="margin-top: 5%;width: 60%;font-size: 20px"><i class="fab fa-whatsapp" ></i>  Enviar Mensaje</a>
+              </div>
+
 
             </div>
           </div>
@@ -58,10 +59,14 @@
     	</div>
      
      </div>
+     <h1 class="text-center" style="background: #6bc82d;color: #ffffff;margin-top: 1%;"  th:if="${anuncios.isEmpty()}">No Hay Anuncios Relacionados</h1>
+  
+    <div th:if="${!anuncios.isEmpty()}">
     
+    <h1 class="text-center" style="background: #6bc82d;color: #ffffff;margin-top: 1%;">Anuncios Relacionados</h1>
     
     <div th:insert="Usuario/index  :: anuncios" ></div>
-  
+  </div>
    
 
   <div th:insert="fragment/Frames combo :: foot"></div>

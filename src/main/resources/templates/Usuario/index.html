@@ -10,28 +10,48 @@
  </head>
  <body>
  	<div th:insert="fragment/Frames combo  :: menu" ></div>
-  
-    <!--<div th:insert="fragment/Frames combo  :: menuUser"  ></div>  <security:authorize access="hasAuthority('ADMIN')">
-       <div th:insert="fragment/Frames combo  :: menuAdmin" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"></div>-->
+ 	
+ 		
+	 <!-- <nav class="navbar navbar-expand-* " style="background-color:#1c89d1; height: auto; padding: 0 ;">
 
-
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" style="color: white;font-size: 17px;margin-left: 1%">
+    	<i class="fas fa-tags"></i> Categorias
+  	</button>
 	
-    		<div class="col-12 banner">
-    	</div>
-
+	  <div class="collapse navbar-collapse " id="navbarSupportedContent" style="color: white;">
+	 
+		    <ul class="navbar-nav mr-auto">
+		   <div class="row col-12 text-center ">
+		      <li class="nav-item dropdown col-2" th:each="categoria : ${categorias}">
+		        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${categoria}" name="categoria" >
+		          Categorias
+		        </a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown"  >
+		          <a class="dropdown-item" href="#"  >Action</a>
+		     
+		        </div>
+		      </li>
+		     </div>
+		 </ul>
+		 	
+		
+	  </div>
+	  
+ 	</nav> --> 
   
+    <div class="col-12 banner">
+    </div>
 
-   
 
     <h1 class="text-center" style="background: #6bc82d;color: #ffffff;margin-top: 1%;"  th:if="${anuncios.isEmpty()}">No Hay Anuncios Publicados</h1>
   
     <div th:if="${!anuncios.isEmpty()}">
-    <div th:fragment="anuncios">
+    
     <h1 class="text-center" style="background: #6bc82d;color: #ffffff;margin-top: 1%;">Anuncios Publicados</h1>
-
+	<div th:fragment="anuncios">
     <div class="col-12" style="margin-top: 1%;">
         <div class="card-columns row-cols-1 row-cols-md-1 row-cols-lg-1">
-            <div class="card container-anuncio " th:each="anuncio : ${anuncios}" style="margin-top: 10px;" id="">
+            <div class="card container-anuncio " th:each="anuncio : ${anuncios}" style="margin-top: 10px;">
 				 <div class="img-box" id="foto2">
                <img th:src="${anuncio.urlFoto}" class="card-img-top"
                     style="margin-bottom: 3%;border-top-left-radius: 15px;border-top-right-radius: 15px;">
@@ -44,11 +64,14 @@
                                     style="font-size: 22px;margin-left: 12px;margin-right: 8px;margin-top: 2px;"></i></span>
                             <h4 class="card-title" th:text="${anuncio.precio}"></h4>
                         </div>
+                              <p class="card-text" th:text="${anuncio.descripcion}" ></p>
+                              
+                              <p class="card-text" style="font-size: 15px">By: <span  th:text="${anuncio.usuario.nombre}"></span></p>
+                        
                     </div>
 
-                    <p class="card-text" th:text="${anuncio.descripcion}"></p>
-
-
+              
+					
                     <div class="text-center">
                         <a th:href="@{/anuncioChat/{idAnuncio}(idAnuncio=${anuncio.idAnuncio})}" class="btn btn-outline-primary" style="margin-bottom:5%;">Ver Anuncio</a>
                     </div>

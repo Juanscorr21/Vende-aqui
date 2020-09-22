@@ -47,13 +47,6 @@ public class MenuController {
 	
 
 	
-	
-	@GetMapping("/menu")
-	   public String menu(Model model) {
-		model.addAttribute("anuncios", anuncioRepo.findAll());
-		model.addAttribute("categorias", categoriaRepo.findAll());
-	       return "fragmnet/menu";
-	  }
 
 		
 	

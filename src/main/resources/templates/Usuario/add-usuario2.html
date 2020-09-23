@@ -25,7 +25,7 @@
         <div class="slide-controls">
           <input type="radio" name="slide" id="login" checked>
           <input type="radio" name="slide" id="signup">
-          <label for="login" class="slide signup"><a href="/signUp">Ingresar</a></label>
+          <label for="login" class="slide signup"><a href="/signUp" th:text="#{adduregister.login.title}">Ingresar</a></label>
           <label for="signup" class="slide login"><a href="/inicioU" th:text="#{adduregister.title}">Registrate</a></label>
           <div class="slider-tab2" href="/inicioU">
           </div>
@@ -36,13 +36,13 @@
           <div class="row">
             <div class="field col-sm-12  col-md-6 col-lg-6 form-group">
               <label for="nombre" style="font-size: 20px;margin-left: 2%;" th:text="#{adduser.name}">Nombre: </label>
-              <input type="text" th:field="*{nombre}" placeholder="Ingrese Nombre" required="required">
+              <input type="text" th:field="*{nombre}" th:placeholder="#{adduser.placeholder.name}" required="required">
               <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>  
             </div>
             
             <div class="field col-sm-12  col-md-6 col-lg-6 form-group">
               <label for="nombre" style="font-size: 20px;margin-left: 3%;" th:text="#{adduser.lastname}" >Apellido: </label>
-              <input type="text" th:field="*{apellido}" placeholder="Ingrese Apellido" required="required">
+              <input type="text" th:field="*{apellido}"  th:placeholder="#{adduser.placeholder.lastname}" required="required">
               <div th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>  
             </div>
           </div>
@@ -50,7 +50,7 @@
           <div class="row">
             <div class="field col-sm-12  col-md-6 col-lg-6 form-group">
               <label for="nombre" style="font-size: 20px;margin-left: 3%;" th:text="#{adduser.UserName}" >UserName: </label>
-              <input type="text" th:field="*{nombreUsuario}" placeholder="Ingrese nombreUsuario" required="required">
+              <input type="text" th:field="*{nombreUsuario}" th:placeholder="#{adduser.placeholder.UserName}" required="required">
               <div th:if="${#fields.hasErrors('nombreUsuario')}" th:errors="*{nombreUsuario}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div> 
               <div th:if="${nombreUsuario}" th:text="${nombreUsuario}" class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>   
             </div>
@@ -92,7 +92,7 @@
           <div class="field btn2">
             <div class="btn-layer">
             </div>
-            <input type="submit" value="Crear Cuenta">
+            <input type="submit" th:value="#{adduregister.login.boton}">
           </div>
 
         </form>

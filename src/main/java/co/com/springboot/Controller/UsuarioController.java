@@ -51,6 +51,14 @@ public class UsuarioController {
 
 	       return "Usuario/add-usuario2";
 	  }
+	
+	
+	@GetMapping("/admin/listaUsuario")
+	   public String listaUsuario(Usuario usuario,Model model) {
+		model.addAttribute("usuarios", userRepo.findAll());
+
+	       return "Usuario/indexU";
+	  }
 
 	@GetMapping("/inicioUser")
 	   public String inicoFomu(Principal pricipal, Model model) {

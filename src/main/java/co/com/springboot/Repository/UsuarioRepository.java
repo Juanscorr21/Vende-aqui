@@ -17,8 +17,8 @@ public interface UsuarioRepository  extends CrudRepository<Usuario, Integer>{
 	//Usuario findByNombreUsuario1(String username);
 	Usuario findByDni(int id_usuario);
 	
-	@Query("SELECT u.dni FROM Usuario u WHERE u.nombreUsuario = :nombreUsuario")
-	Usuario  findAllByNombreUsuario(@Param("nombreUsuario") String nombreUsuario);
+	@Query("SELECT u FROM Usuario u WHERE u.nombreUsuario = :nombreUsuario")
+	Usuario  findDniByNombreUsuario(@Param("nombreUsuario") String nombreUsuario);
 	
 	Optional<Usuario> findByNombreUsuario(String nombreUsuario);
 	

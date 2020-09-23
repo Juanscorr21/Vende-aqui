@@ -124,7 +124,7 @@ public class AnuncioController {
 	    	return "Anuncio/add-anuncio";
 	     }
 	  
-	    Usuario usuario = usuarioRepo.findAllByNombreUsuario(principal.getName());
+	    Usuario usuario = usuarioRepo.findDniByNombreUsuario(principal.getName());
 	    
 	    anuncio.setUsuario(usuario);
 	    
@@ -162,7 +162,7 @@ public class AnuncioController {
 
 	         	return "Anuncio/update-anuncio";
 	        }
-	        Usuario usuario = usuarioRepo.findAllByNombreUsuario(principal.getName());
+	        Usuario usuario = usuarioRepo.findDniByNombreUsuario(principal.getName());
 		    
 		    anuncio.setUsuario(usuario);
 		    

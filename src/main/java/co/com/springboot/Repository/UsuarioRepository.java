@@ -1,6 +1,6 @@
 package co.com.springboot.Repository;
 
-import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
@@ -20,7 +20,7 @@ public interface UsuarioRepository  extends CrudRepository<Usuario, Integer>{
 	@Query("SELECT u.dni FROM Usuario u WHERE u.nombreUsuario = :nombreUsuario")
 	Usuario  findAllByNombreUsuario(@Param("nombreUsuario") String nombreUsuario);
 	
-	Usuario findByNombreUsuario(String nombreUsuario);
+	Optional<Usuario> findByNombreUsuario(String nombreUsuario);
 	
 	String findAllByEmail(String string);
 	

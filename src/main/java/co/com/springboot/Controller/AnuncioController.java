@@ -124,7 +124,7 @@ public class AnuncioController {
 	    	return "Anuncio/add-anuncio";
 	     }
 	  
-	    Usuario usuario = usuarioRepo.findByNombreUsuario(principal.getName());
+	    Usuario usuario = usuarioRepo.findAllByNombreUsuario(principal.getName());
 	    
 	    anuncio.setUsuario(usuario);
 	    
@@ -155,14 +155,17 @@ public class AnuncioController {
 	
 	
 	 @PostMapping("/user/actualizarAnuncio/{idAnuncio}")
-	    public String actulizarAnuncio(@PathVariable("idAnuncio") int id, @Valid Anuncio anuncio, BindingResult resultado, Model model,@RequestParam("file") MultipartFile file) {
+	    public String actulizarAnuncio(@PathVariable("idAnuncio") int id, @Valid Anuncio anuncio, BindingResult resultado, Model model,@RequestParam("file") MultipartFile file,Principal principal) {
 	        if (resultado.hasErrors()) {
 	        	anuncio.setIdAnuncio(id);
 	         	model.addAttribute("subcategorias", subCatRepo.findAll() );
 
 	         	return "Anuncio/update-anuncio";
 	        }
-	 
+	        Usuario usuario = usuarioRepo.findAllByNombreUsuario(principal.getName());
+		    
+		    anuncio.setUsuario(usuario);
+		    
 	        
 	        try {
 		    	Map uploadResult= cloudinary.upload(file.getBytes(), ObjectUtils.asMap("resourcetype","auto"));

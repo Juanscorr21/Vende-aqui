@@ -64,14 +64,7 @@ public class UsuarioController {
 	@PostMapping("/agregarU")
 	  public String agregarUsuario(@Valid Usuario usuario,BindingResult resultado, Model model) {
 		
-		/**Optional<Usuario> nombreExist = userRepo.findByNombreUsuario(usuario.getNombreUsuario());		
-		if(nombreExist.isPresent()) {
-						
-				model.addAttribute("nombreUsuario","Nombre de usuario ya esta en uso");				
-				return  "Usuario/add-usuario2";
-			
-			}*/
-		
+
 		if (!usuario.getContrasena().equals(usuario.getConficontrasena())) {			
  			model.addAttribute("errorPassword", Mensaje);
 

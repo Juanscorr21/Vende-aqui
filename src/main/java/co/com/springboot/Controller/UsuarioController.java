@@ -121,23 +121,12 @@ public class UsuarioController {
 	    public ModelAndView actulizarUsurio(@PathVariable("dni") int dni, @Valid Usuario usuario, BindingResult resultado, Model model) {
 		 
 		 
-		/**Optional<Usuario> nombreExist = userRepo.findByNombreUsuario(usuario.getNombreUsuario());
 		
-		if(nombreExist.isPresent()) {
-						
-				model.addAttribute("nombreUsuario","Nombre de usuario ya esta en uso");				
-				return new ModelAndView("Usuario/updateU");
-			
-			}*/
-			
-			
 		 
 	        if (resultado.hasErrors()) {
 	        	usuario.setDni(dni);
-	        	if (!usuario.getContrasena().equals(usuario.getConficontrasena())) {			
-					model.addAttribute("errorPassword", Mensaje);
-				    return new ModelAndView("Usuario/add-usuario2");
-			     }	
+	        	
+			
 	        	return new ModelAndView("Usuario/updateU");
 	           
 	        }	        

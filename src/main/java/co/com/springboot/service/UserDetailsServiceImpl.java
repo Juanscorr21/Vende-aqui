@@ -19,18 +19,18 @@ import co.com.springboot.domain.Usuario;
 import lombok.Data;
 
 @Service
-@Data
+
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     UsuarioRepository userRepository;
 	
-   public   Usuario appUser;
+ 
     @Override
      public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
      //Buscar el usuario con el repositorio y si no existe lanzar una exepcion
-       appUser = 
+    	Usuario appUser = 
                  userRepository.findByNombreUsuario(username);
 		
     //Mapear nuestra lista de Authority con la de spring security 

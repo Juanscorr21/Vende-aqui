@@ -10,8 +10,33 @@
  </head>
  <body>
  	<div th:insert="fragment/Frames combo  :: menu" ></div>
- 	
  		
+	   <nav class="navbar navbar-expand-* " style="background-color:#1c89d1; height: auto; padding: 0 ;">
+	
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" style="color: white;font-size: 17px;margin-left: 1%">
+	    	<i class="fas fa-tags"></i> Categorias
+	  	</button>
+		
+		  <div class="collapse navbar-collapse " id="navbarSupportedContent" style="color: white;">
+		 
+			    <ul class="navbar-nav mr-auto">
+			   <div class="row col-12 text-center ">
+			      <li class="nav-item dropdown col-2" th:each="categoria : ${categorias}">
+			        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${categoria.nombre}" name="categoria" >
+			          Categorias
+			        </a>
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown"  >
+			          <a class="dropdown-item" href="#"  >Action</a>
+			     
+			        </div>
+			      </li>
+			     </div>
+			 </ul>
+			 	
+			
+		  </div>
+		  
+	 	</nav>
 	 
     <div class="col-12 banner">
     </div>

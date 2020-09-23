@@ -177,7 +177,5 @@ body{
  
     border: solid 2px #47eb55d0;
 }
-::-webkit-scrollbar {
-	width: 0;
-	
+::-webkit-scrollbar {	
 }

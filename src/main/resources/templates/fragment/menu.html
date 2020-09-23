@@ -11,7 +11,8 @@
 
             <div class="text text-center">
                 <a href="/">Menu</a></div>
-
+                 <div class=" text-center" style="font-size: 20px">
+ 				 <a  sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Modo Administrador  </a> </div>
 
             <nav class="navbar navbar-light bg-light" style="margin-bottom: 1%;">
                 <a class="navbar-brand"></a>
@@ -29,9 +30,9 @@
 				<li sec:authorize="!isAuthenticated()" style="margin-top: 15%">
                 </li>
                 
-                <li style="text-align: center;margin-top: -8%;margin-bottom: 5%" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                    <a >   
-                    <i class="fas fa-user-secret"></i>  Bienvenido <span  sec:authentication="name"></span> </a>
+                <li style="text-align: center;margin-top: -8%;margin-bottom: 5%" sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
+                  
+                   <i class="fas fa-child"></i> Bienvenido <span  sec:authentication="name"></span> </a>
                 </li>
 	
                 <li>

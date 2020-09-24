@@ -60,7 +60,7 @@
                               <div class="input-group-prepend">
                                   <span class="input-group-text" id="icono-categoria"><i class="fas fa-tags"></i></span>
                               </div>
-                               <select class="form-control" id="select"  th:field="*{subCategoria}" >
+                               <select class="form-control" id="select"  th:field="*{subCategoria}" required oninvalid="setCustomValidity('No puede crear un anuncio sin una categoria')">
                                		
                      					<option th:each="subCategoria : ${subcategorias}" th:value="${subCategoria.idSubcategoria}" th:text="${subCategoria.nombre}"></option>	
                   			</select>              

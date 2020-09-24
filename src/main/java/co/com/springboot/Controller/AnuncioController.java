@@ -41,13 +41,6 @@ import co.com.springboot.domain.Anuncio;
 import co.com.springboot.domain.Usuario;
 import co.com.springboot.service.UserDetailsServiceImpl;
 
-
-
-
-
-
-
-@SuppressWarnings("unused")
 @Controller
 public class AnuncioController {
 

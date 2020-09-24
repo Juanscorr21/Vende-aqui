@@ -10,14 +10,14 @@
             </div>
 
             <div class="text text-center">
-                <a href="/">Menu</a></div>
+                <a href="/" th:text="#{admin.menu}">Menu</a></div>
                  <div class=" text-center" style="font-size: 20px">
- 				 <a  sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Modo Administrador  </a> </div>
+ 				 <a  sec:authorize="hasAnyAuthority('ROLE_ADMIN')" th:text="#{admin.modoAdministrador}"></a> </div>
 
             <nav class="navbar navbar-light bg-light" style="margin-bottom: 1%;">
                 <a class="navbar-brand"></a>
                 <form class="form-inline" th:action="@{/findByTitulo}" method="get">
-                    <input class="form-control mr-sm-1 " type="search" placeholder="Buscar" aria-label="Search"
+                    <input class="form-control mr-sm-1 " type="search" th:placeholder="#{admin.buscar}" aria-label="Search"
                         style="width: 285px;margin-left: -1%;" name="titulo">
                     <button class="btn btn-outline-primary " type="submit"><i class="fas fa-search"></i></button>
                 </form>
@@ -32,19 +32,19 @@
                 
                 <li style="text-align: center;margin-top: -8%;margin-bottom: 5%" sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
                   
-                   <i class="fas fa-child" ></i> Bienvenido <span  sec:authentication="name"></span> </a>
+                   <i class="fas fa-child" ></i>   <span th:text="#{admin.Bienvenido}"></span>   <span  sec:authentication="name"></span> </a>
                 </li>
 	
                 <li>
                     <a href="/">
                         <i class="fas fa-home"></i>
-                        Explorar</a>
+                         <span th:text="#{admin.Explorar}"></span></a>
                 </li>	
                 
                    <li>
                     <a href="/user/anuncio">
                         <i class="fas fa-shopping-cart"></i>
-                        Publicar</a>
+                       <span th:text="#{admin.Publicar}"></span></a>
                 </li>
                 <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                 
@@ -52,17 +52,17 @@
 
                     <a href="#menuPerfil" data-toggle="collapse" aria-expanded="false">
                         <i class="fas fa-user"></i>
-                        Perfil</a>
+                       <span th:text="#{admin.Perfil}"></span></a>
                     <ul class="collapse list-unstyled" id="menuPerfil">
                         <li>
-                            <a href="/inicioUser">Mi Perfil</a>
+                            <a href="/inicioUser" th:text="#{admin.MiPerfil}"></a>
                         </li>
                         <li sec:authorize="isAuthenticated()">
-                            <a href="/user/ListAnuncio">Mis Anuncios</a>
+                            <a href="/user/ListAnuncio" th:text="#{admin.MisAnuncios}"> </a>
                         </li>
                         
                         <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                            <a href="/admin/inicioAdmin">Agregar Administrador</a>
+                            <a href="/admin/inicioAdmin" th:text="#{admin.AddAdmin}"> Administrador</a>
                         </li>
                     </ul>
                 </li>
@@ -72,7 +72,7 @@
                  <li sec:authorize="hasAnyAuthority('ROLE_USER')">
                     <a href="/inicioUser">
                       <i class="fas fa-user"></i>
-                        Perfil</a>
+                          <span th:text="#{admin.MiPerfil}"></span></a></a>
                 </li>
                 
                  <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
@@ -85,7 +85,7 @@
                 <li sec:authorize="hasAnyAuthority('ROLE_USER')">
                     <a href="/user/ListAnuncio">
                      <i class="fab fa-product-hunt"></i>
-                        Mis Anuncios</a>
+                        <span th:text="#{admin.MisAnuncios}"></span></a>
                 </li>
                 
                 
@@ -95,34 +95,32 @@
 
                     <a href="#MenuLitasCatg" data-toggle="collapse" aria-expanded="false">
                       <i class="fas fa-clipboard-list"></i>
-                         Listas De Categorias</a>
+                         <span th:text="#{admin.ListaCategoria}"></span></a>
                     <ul class="collapse list-unstyled" id="MenuLitasCatg">
-                        	<li>
-                             <a href="/admin/c">Categorias</a>
+                        	<li>	
+                             <a href="/admin/c"  th:text="#{admin.Categoria}"></a>
                          	</li>
                          	<li>
-                               <a href="/admin/listaSubcategoria">Subcategorias</a>
+                               <a href="/admin/listaSubcategoria" th:text="#{admin.SubCategori}"></a>
                             </li>
                      
                     </ul>
                 </li>
                 
                  <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                
-                
 
                     <a href="#MenuLitasPaises" data-toggle="collapse" aria-expanded="false">
                       <i class="fas fa-clipboard-list"></i>
-                         Listas De Paises</a>
+                          <span th:text="#{admin.ListasPaisesTitulo}"></span></a>
                     <ul class="collapse list-unstyled" id="MenuLitasPaises">
                         	<li>
-                                <a href="/listaPaises">Lista Paises</a>
+                                <a href="/listaPaises" th:text="#{admin.ListasPaisesTitulo}">Lista Paises</a>
                             </li>
                             <li>
-                                <a href="/departamento/ListaDept">Lista Departamentos</a>
+                                <a href="/departamento/ListaDept" th:text="#{admin.ListaDptamentos}">Lista Departamentos</a>
                             </li>
                             <li>
-                                <a href="/listaMunicipios">Lista Municipios</a>
+                                <a href="/listaMunicipios" th:text="#{admin.ListaMunici}">Lista Municipios</a>
                             </li>
                      
                     </ul>
@@ -135,13 +133,13 @@
 
                     <a href="#menuCategorias" data-toggle="collapse" aria-expanded="false">
                     <i class="fas fa-tags"></i>
-                         Gestionar Categorias</a>
+                        <span th:text="#{admin.GestionarCategoria}"></span></a>
                     <ul class="collapse list-unstyled" id="menuCategorias">
                         	<li>
-                               <a th:href="@{/admin/registroCategoria}">Agregar Categoria</a>
+                               <a th:href="@{/admin/registroCategoria}" th:text="#{registercategory.title}">Agregar Categoria</a>
                            </li>
                          	<li>
-                               <a  th:href="@{/admin/registroSubcategoria}">Agregar Subcategoria</a>
+                               <a  th:href="@{/admin/registroSubcategoria}" th:text="#{subcategory.title}">Agregar Subcategoria</a>
                            </li>
                      
                     </ul>
@@ -151,7 +149,7 @@
                 <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">             
                     <a href="#menuPais" data-toggle="collapse" aria-expanded="false">
                  <i class="fas fa-map"></i>
-                         Gestionar Paises</a>
+                        <span th:text="#{admin.titleGestionarPaises}"></span></a>
                     <ul class="collapse list-unstyled" id="menuPais">
 							<li >
                                <a href="/inicioPais" >Agregar Pais</a>
@@ -167,15 +165,10 @@
                     </ul>
                 </li>
               
-                
-
-                
-            
-
                 <li>
                     <div class="row">
                         <i class="fas fa-globe"
-                            style="margin-left: 7%;margin-top: 4%;font-size: 20px;margin-bottom: -20%;"></i>
+                            style="margin-left: 7%;margin-top: 3%;font-size: 20px;margin-bottom: -20%;"></i>
                         <select id="locales">
 
                             <option selected th:text="#{language}">Idioma </option>
@@ -193,7 +186,7 @@
            		<li sec:authorize="isAuthenticated()">
              		<a href="#" id="cerrar" class="btn btn-outline-light">
                     <form th:action="@{/logout}" method="post">
-            			<input type="submit" value="Cerrar Sesion" id="botonc"/>
+            			<input type="submit" th:value="#{admin.btnCerrarSesion}" id="botonc"/>
         			</form></a>
              	</li>
                 <li sec:authorize="!isAuthenticated()" style="margin-top: 1rem">

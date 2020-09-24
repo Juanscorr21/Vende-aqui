@@ -12,7 +12,7 @@
 
        <header class="col-sm-12 col-lg-12 text-center  myheader">
            <div class="content">
-               <a class="titulo" href="add-usuario.html" th:href="@{/admin/registroSubcategoria}" >Lista Subcategorias</a>
+               <a class="titulo" href="add-usuario.html" th:href="@{/admin/registroSubcategoria}" th:text="#{listSubcategory.title}">Lista Subcategorias</a>
            </div>
        </header> 
              
@@ -22,9 +22,9 @@
            <table class="table table-striped table-hover table-lg">
               <thead>
                   <tr class="nombre-tabel">	           	
-                    <th colspan="1">Categoria</th>
-                     <th colspan="1">Subcategoria</th>
-                      <th colspan="2">Cambios</th>  
+                    <th colspan="1" th:text="#{listSubcategory.category}">Categoria</th>
+                     <th colspan="1" th:text="#{listSubcategory.Subcategory}">Subcategoria</th>
+                      <th colspan="2" th:text="#{listSubcategory.changes}">Cambios</th>  
             
                   </tr>
               </thead>

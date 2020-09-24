@@ -13,7 +13,7 @@
   <div class="container  col-sm-12 col-md-12 col-lg-8  contenedor" style="margin-top: 3rem; " sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
 
 		<div class="text-center" id="menu">
-               <h2  style="padding-top: 3%;color:#1c89d1;font-size: 50px">Registrar Subcategoria
+               <h2  style="padding-top: 3%;color:#1c89d1;font-size: 50px" th:text="#{subcategory.title}">Registrar Subcategoria
                </h2>
                <hr style="background-color:rgba(39, 144, 170, 0.822); height: 3px; margin-top: 15;margin-bottom: 5%;">
            </div>
@@ -21,7 +21,7 @@
         <form action="#" th:action="@{/admin/agregarSub}"  th:object="${subcategoria}" method="post">
 
             <div class="text-left inputs-bg" id="user-group">
-                <label for="nombre" style="font-size: 20px;margin-left: 2%;">Seleccione Categoria: </label>
+                <label for="nombre" style="font-size: 20px;margin-left: 2%;" th:text="#{subcategory.select}">Seleccione Categoria: </label>
                 <div class="input-group  ">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="icono-categoria"><i class="fas fa-tags"></i></span>
@@ -35,22 +35,21 @@
             </div>
 
             <div class="text-left inputs-bg" id="user-group">
-                <label for="nombre" style="font-size: 20px;margin-left: 2%;margin-top: 3%;">Nombre Subcategoria: </label>
+                <label for="nombre" style="font-size: 20px;margin-left: 2%;margin-top: 3%;" th:text="#{subcategory.NameSubcategory}">Nombre Subcategoria: </label>
                 <div class="input-group  ">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="icono-categoria"><i class="fas fa-tags"></i></span>
                     </div>
                     <input type="text" class="form-control" th:field="*{nombre}" id="nombre"
-                        placeholder="Ingrese Subcategoria" required="required">
+                        th:placeholder="#{subcategory.placeholder}" required="required">
                 </div>
                 <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
                 <div th:if="${subcategoriaExistente}" th:text="${subcategoriaExistente}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
             </div>
 
                     <div class="text-center button2">
-                      <a href="/admin/listaSubcategoria" class="btn btn-danger" id="button-forms"> <i
-                        class="far fa-times-circle"></i> Cancelar</a>                  
-                        <button type="submit" class="btn btn-success">Agregar <i class="far fa-check-circle"></i></button>
+                      <a href="/admin/listaSubcategoria" class="btn btn-danger" id="button-forms" th:text="#{subcategory.btnacancel}"> Cancelar</a>                  
+                        <button type="submit" class="btn btn-success" th:text="#{registercategory.btnadd}">Agregar <i class="far fa-check-circle"></i></button>
                     </div>
 
         </form>

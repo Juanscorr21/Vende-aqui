@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"  lang="en">
  <head>
- 	<!--<link rel="icon" type="image/png" href="static/img/logo2.png" th:href="@{/img/logo2.png}">  -->
+ <link rel="icon" type="image/png" href="static/img/logo5.png" th:href="@{/img/007.png}">
    <div th:replace="fragment/Frames combo :: myheader"></div>
    
    	<link rel="stylesheet" type="text/css" href="static/css/stylesList.css" th:href="@{/css/stylesList.css}">
@@ -11,7 +11,7 @@
  <body>
  	<div th:insert="fragment/Frames combo  :: menu" ></div>
  		
-	   <nav class="navbar navbar-expand-* " style="background-color:#1c89d1; height: auto; padding: 0 ;">
+	   <nav class="navbar navbar-expand-* " style="background-color:#0098db; height: auto; padding: 0 ;">
 	
 			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" style="color: white;font-size: 17px;margin-left: 1%">
 	    	<i class="fas fa-tags"></i> Categorias
@@ -42,22 +42,33 @@
     </div>
 
 
-    <h1 class="text-center" style="background: #6bc82d;color: #ffffff;margin-top: 1%;"  th:if="${anuncios.isEmpty()}">No Hay Anuncios Publicados</h1>
-  
+    <div class="container col col-12 col-lg-10"  th:if="${anuncios.isEmpty()}" style="margin-top:2%;">
+        <div class="card container-error" >
+            <div class="card-body text-center" >
+                <h2 style="font-size: 50px;color:#7cbc23;margin: 1%;">No Hay Anuncios Publicados</h2>
+
+                <div class="text-center">
+                    <a href="/user/anuncio" class="btn btn-outline-success">Publicar Anuncio</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div th:if="${!anuncios.isEmpty()}">
     
-    <h1 class="text-center" style="background: #6bc82d;color: #ffffff;margin-top: 1%;">Anuncios Publicados</h1>
+    <h1 class="text-center" style="background: #7cbc23;color: #ffffff;margin-top: 1%;">Anuncios Publicados</h1>
 	<div th:fragment="anuncios">
     <div class="col-12" style="margin-top: 1%;">
-        <div class="card-columns row-cols-1 row-cols-md-1 row-cols-lg-1">
+        <div class="card-columns row-cols-1 row-cols-md-1 row-cols-lg-1" >
             <div class="card container-anuncio " th:each="anuncio : ${anuncios}" style="margin-top: 10px;">
 				 <div class="img-box" id="foto2">
-               <img th:src="${anuncio.urlFoto}" class="card-img-top"
-                    style="margin-bottom: 3%;border-top-left-radius: 15px;border-top-right-radius: 15px;">
+		               <img th:src="${anuncio.urlFoto}" class="card-img-top"
+		                    style="margin-bottom: -30px;border-top-left-radius: 5px;border-top-right-radius: 5px;">
+		              
 				</div>
-                <div class="col-12">
+                <div class="col-12" id="contenidoCard">
                     <div class="card-body">
-                        <h1 class="card-title" th:text="${anuncio.titulo}" id="titulo"></h1>
+                        <h1 class="card-title text-center" th:text="${anuncio.titulo}" id="tituloCard"></h1>
+                        
                         <div class="row">
                             <span><i class="fas fa-dollar-sign"
                                     style="font-size: 22px;margin-left: 12px;margin-right: 8px;margin-top: 2px;"></i></span>
@@ -65,7 +76,7 @@
                         </div>
                               <p class="card-text" th:text="${anuncio.descripcion}" ></p>
                               
-                              <p class="card-text" style="font-size: 15px">By: <span  th:text="${anuncio.usuario.nombre}"></span></p>
+                              <p class="card-text" style="font-size: 15px"><i class="fas fa-user"></i> <span  th:text="${anuncio.usuario.nombre}"></span></p>
                         
                     </div>
 
@@ -80,6 +91,76 @@
     </div>
     </div>
     </div>
+    
+    
+        <footer class="col">
+
+            <div class="container-footer-all">
+
+                <div class="container-body">
+
+                    <div class="colum1">
+                        <h1>Elaborado</h1>
+
+                        <p style="font-size: 18px;">El proyecto VendeAqui fue elaborado con las siguientes Herramientas:
+                            *Java con el framework de Spring Boot(spring-boot-security,spring-boot-starter-web,thymeleaf-extras-springsecurity5,hibernate-validator,spring-boot-devtools,lombok)
+                            *Maven
+                            *html:5
+                            *Bootstrap 4
+                            *css
+                            *thymeleaf
+                            *MySQL
+                            *Heroku
+                            *Cloudinary
+                        </p>
+
+                    </div>
+
+                    <div class="colum2" style="padding: 0">
+
+                        <h1>Realizado Por</h1>
+
+                        <div class="row">
+                            <label><i class="fas fa-user"></i> Brayan Santago Leal Henao</label>
+                        </div>
+
+                        <div class="row">
+                            <label><i class="fas fa-user"></i> Deiby Lugo Montealegre </label>
+                        </div>
+                        <div class="row">
+                            <label><i class="fas fa-user"></i> Luis Miguel Garcia Toro</label>
+                        </div>
+
+                        <div class="row">
+                            <label><i class="fas fa-user"></i> Juan Pablo Corredor Serrano</label>
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            
+
+        </footer>
+        
+        <div class="pie">
+                <div class="footer">
+                    <div class="copyright">
+                        © 2020 Todos los Derechos Reservados | <a href="">VendeAqui.com</a>
+                    </div>
+
+                    <div class="information">
+                        <a href="">Sena</a> | <a href="">centro de Comercio y Turismo</a> | <a
+                            href="">Armenia,Quindio</a>
+                    </div>
+                </div>
+
+            </div>
 
 <div th:insert="fragment/Frames combo :: foot"></div>
 

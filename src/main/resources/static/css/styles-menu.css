@@ -25,8 +25,8 @@ a:focus {
     transition: all 0.3s;
 }
 
-.btn2 span{
-    color: #0099ff;
+.btn span{
+    color: #8fc14a;
     font-size: 28px;
     line-height: 45px;
 }

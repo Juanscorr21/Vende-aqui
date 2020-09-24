@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+<link rel="icon" type="image/png" href="static/img/logo5.png" th:href="@{/img/007.png}">
    <div th:replace="fragment/Frames combo :: myheader"></div>
    <link rel="stylesheet" type="text/css" href="static/css/stylesFormularios.css"
         th:href="@{/css/stylesFormularios.css}">
@@ -92,6 +93,8 @@
                      
 
                   <div class="text-center" id="button" >
+                  <a th:href="@{/user/ListAnuncio}" class="btn btn-danger" id="button-forms"> <i
+                        class="far fa-times-circle"></i> Cancelar</a>
                       <button	 type="submit" class="btn btn-success ">Agregar  <i class="far fa-check-circle"></i></button>
                   </div>
 

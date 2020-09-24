@@ -31,7 +31,8 @@
                 <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
             </div>
 
-            <div class="text-center button2">                  
+            <div class="text-center button2">
+          <a href="/listaPaises"  class="btn btn-danger" id="button-forms" > Cancelar</a>                              
                     <button type="submit" class="btn btn-success">Agregar <i class="far fa-check-circle"></i></button>
             </div>
         </form>

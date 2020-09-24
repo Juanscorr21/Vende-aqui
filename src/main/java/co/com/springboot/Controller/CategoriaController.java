@@ -1,6 +1,7 @@
 package co.com.springboot.Controller;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -94,8 +95,10 @@ public class CategoriaController {
 	 @GetMapping("/admin/eliminarCategoria/{idCategoria}")
 	    public ModelAndView eliminarCategoria(@PathVariable("idCategoria") int id, Model model) {
 		 Categoria categoria = categoriaRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid categoria Id:" + id));
-		 categoriaRepo.delete(categoria);
-
+		 
+		 List<Subcategoria> subcategorias = subcategoriaRepo.findAllByCategoria(categoria.getIdCategoria());
+		 subcategoriaRepo.deleteAll(subcategorias);
+		 	categoriaRepo.delete(categoria);
 	       model.addAttribute("categorias", categoriaRepo.findAll());
 	        return new ModelAndView("redirect:"+ "/admin/c");
 	  }

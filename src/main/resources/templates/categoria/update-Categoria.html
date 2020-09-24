@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+<link rel="icon" type="image/png" href="static/img/logo5.png" th:href="@{/img/007.png}">
     <div th:replace="fragment/Frames combo :: myheader"></div>
    <link rel="stylesheet" type="text/css" href="static/css/stylesFormularios.css"
         th:href="@{/css/stylesFormularios.css}">
@@ -12,9 +13,9 @@
 
     
 			<div class="text-center" id="menu">
-                <h2 style="padding-top: 3%;color:#1c89d1;font-size: 50px"th:text="#{updatecategory.title}">
+                <h2 style="padding-top: 3%;color:#0098db;font-size: 50px"th:text="#{updatecategory.title}">
                 </h2>
-                <hr style="background-color:rgba(39, 144, 170, 0.822); height: 3px; margin-top: 15;margin-bottom: 5%;">
+                <hr style="background-color:#0098db; height: 3px; margin-top: 15;margin-bottom: 5%;">
             </div>
          
              <form action="#"  th:action="@{/admin/actualizarCategoria/{idCategoria}(idCategoria=${categoria.idCategoria})}" th:object="${categoria}" method="post">

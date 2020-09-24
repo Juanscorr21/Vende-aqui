@@ -32,7 +32,7 @@
                 
                 <li style="text-align: center;margin-top: -8%;margin-bottom: 5%" sec:authorize="hasAnyAuthority('ROLE_USER','ROLE_ADMIN')">
                   
-                   <i class="fas fa-child"></i> Bienvenido <span  sec:authentication="name"></span> </a>
+                   <i class="fas fa-child" ></i> Bienvenido <span  sec:authentication="name"></span> </a>
                 </li>
 	
                 <li>
@@ -76,9 +76,9 @@
                 </li>
                 
                  <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                    <a href="/admin/listaUsuario">
-                       <i class="fas fa-users"></i>
-                        Lista Usuarios</a>
+                    <a href="/admin/listaUsuario" >
+                       <i class="fas fa-users" style="font-size: 20px"></i> <span th:text="#{listUsers.title}"></span>
+                        </a>
                 </li>
               
                 
@@ -217,7 +217,7 @@
 	            </button>
 	         
 	        </nav>
-        <hr style="background-color:#1c89d1; height: 3px; padding: 0 ;margin: 0" >
+        <hr style="background-color:#0098db; height: 3px; padding: 0 ;margin: 0" >
         
   
 

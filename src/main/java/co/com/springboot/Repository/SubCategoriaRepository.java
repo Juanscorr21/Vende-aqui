@@ -12,6 +12,7 @@ import org.springframework.data.repository.query.Param;
 //import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import co.com.springboot.domain.Anuncio;
 import co.com.springboot.domain.Subcategoria;
 
 
@@ -29,6 +30,9 @@ public interface SubCategoriaRepository extends CrudRepository<Subcategoria, Int
 	
 	@Query("SELECT s From Subcategoria s WHERE s.categoria.nombre LIKE :nombre ")
 	List<Subcategoria> findAllSubcategoriaByCategoria(@Param("nombre") String categoria);
+	
+	@Query("SELECT s From Subcategoria s WHERE s.categoria.idCategoria = :idCategoria")
+	List<Subcategoria> findAllByCategoria(@Param("idCategoria")  int idCategoria);
 	
 	
 

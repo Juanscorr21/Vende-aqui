@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+<link rel="icon" type="image/png" href="static/img/logo5.png" th:href="@{/img/007.png}">
     <div th:replace="fragment/Frames combo :: myheader"></div>
    <link rel="stylesheet" type="text/css" href="static/css/stylesFormularios.css"
         th:href="@{/css/stylesFormularios.css}">
@@ -46,7 +47,9 @@
                 <div th:if="${subcategoriaExistente}" th:text="${subcategoriaExistente}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
             </div>
 
-                    <div class="text-center button2">                  
+                    <div class="text-center button2">
+                      <a href="/admin/listaSubcategoria" class="btn btn-danger" id="button-forms"> <i
+                        class="far fa-times-circle"></i> Cancelar</a>                  
                         <button type="submit" class="btn btn-success">Agregar <i class="far fa-check-circle"></i></button>
                     </div>
 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+<link rel="icon" type="image/png" href="static/img/logo5.png" th:href="@{/img/007.png}">
    <div th:replace="fragment/Frames combo :: myheader"></div>
  	<link rel="stylesheet" type="text/css" href="static/css/stylesList.css" th:href="@{/css/stylesList.css}">
 </head>
@@ -10,12 +11,13 @@
     <div class="row col"  style="padding-left:1;padding-right: 0" th:each="anuncio : ${anuncio}"  th:object="${anuncio}">
 
 
-    <div class="col-sm-12 col-lg-7" style="margin-bottom: 2%;padding-right: 0">
+    <div class="col-sm-12 col-lg-7" style="margin-bottom: 2%;padding: 0">
       <div id="foto">
-	      <h1 class="card-title text-center"  style="color:#2086dad0;font-size: 40px " th:text="${anuncio.titulo}"> </h1>
+       	<div class="card" style="border-bottom: none;">
+	      <h1 class="card-title text-center"  style="color:#0197db;font-size: 40px " th:text="${anuncio.titulo}"> </h1></div>
 	        <img th:src="${anuncio.urlFoto}"  style="width: 100%; height: auto;" />
 	        
-	        <div class="card" style=" border: solid 1px #47a1ebd0;border-top: none;">
+	        <div class="card" style="border-top: none;">
 	        
 	    
 	        <div class="card-body">
@@ -34,7 +36,7 @@
 		<div class="card" id="card">
             <div class="card-body">
               <h2 class="card-title text-center" style="color:#2086dad0; "> Datos Del Vendedor</h2>
-              <hr style="background-color:rgba(39, 170, 46, 0.822); height: 3px; margin-top: 15;margin-bottom: 5%;">
+              <hr style="background-color:#7bbe24; height: 3px; margin-top: 15;margin-bottom: 5%;">
               <div class="row">
                 <div class="col-sm-12 col-lg-12">
                   <h5 class="card-subtitle mb-2 text-muted" style="margin-top: 2%;">Telefono</h5>

@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import co.com.springboot.Repository.AnuncioRepository;
 import co.com.springboot.Repository.AuthorityRepository;
 
 //import org.springframework.web.bind.annotation.RequestMapping;
 import co.com.springboot.Repository.UsuarioRepository;
+import co.com.springboot.domain.Anuncio;
 import co.com.springboot.domain.Authority;
 import co.com.springboot.domain.Categoria;
 import co.com.springboot.domain.Usuario;
@@ -35,6 +37,9 @@ public class UsuarioController {
 
 	@Autowired
 	private AuthorityRepository authorityRepository;
+	
+	@Autowired
+	private AnuncioRepository anuncioRepository;
 	
 	 @Autowired
 	 Passgenerator passgenerator;
@@ -92,10 +97,7 @@ public class UsuarioController {
 	       return  "Usuario/add-usuario2";
 	       
 	     }
-	 	
-	 	
-	     
-	    	 
+	 
         Authority autorizacion= authorityRepository.findByAuthority("ROLE_USER");
                     
         Set<Authority> authority= new HashSet<Authority>();
@@ -147,9 +149,13 @@ public class UsuarioController {
 	 @GetMapping("/admin/eliminarU/{dni}")
 	    public ModelAndView eliminarUsuario(@PathVariable("dni") int dni, Model model) {
 		 Usuario usuario = userRepo.findById(dni).orElseThrow(() -> new IllegalArgumentException("Id: " + dni + " del usuario es invalido"));
+		 	
+		 	List<Anuncio>  anuncios = anuncioRepository.findAllByUsuario(usuario.getDni());
+		 
+		 	anuncioRepository.deleteAll( anuncios);
 	        userRepo.delete(usuario);
 	        model.addAttribute("usuarios", userRepo.findAll());
-	        return new ModelAndView("redirect:"+ "/inicioUser");
+	        return new ModelAndView("redirect:"+ "/admin/listaUsuario");
 	    }
 	 
 }

@@ -97,6 +97,10 @@ body{
      
 }
 
+.container-anuncio:hover{
+	    border: solid 2px #0296da;
+
+}
 
 
 #tituloCard{

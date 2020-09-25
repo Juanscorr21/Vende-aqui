@@ -15,10 +15,10 @@
     <div class="container col-12 col-lg-9" th:if="${anuncios.isEmpty()}" style="margin-top:7%">
         <div class="card container-error" >
             <div class="card-body text-center" >
-                <h2 style="font-size: 68px;color:#1c89d1;margin: 2%;">No Hay Anuncios Publicados</h2>
+                <h2 style="font-size: 68px;color:#1c89d1;margin: 2%;" th:text="#{admin.titulo}">No Hay Anuncios Publicados</h2>
 
                 <div class="text-center">
-                    <a href="/user/anuncio" class="btn btn-outline-success">Publicar Anuncio</a>
+                    <a href="/user/anuncio" class="btn btn-outline-success" th:text="#{admin.btn}">Publicar Anuncio</a>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
 	
 
 	<div th:if="${!anuncios.isEmpty()}">
-  <h1 class="text-center" style="background: #6bc82d;color: #ffffff;margin-top: 1%;">Mis Anuncios</h1>
+  <h1 class="text-center" style="background: #6bc82d;color: #ffffff;margin-top: 1%;" th:text="#{admin.MisAnuncios}">Mis Anuncios</h1>
 
 
     <div class="col-12" style="margin-top: 1%;">
@@ -36,18 +36,19 @@
                <div class="img-box" id="foto2">
                <img th:src="${anuncio.urlFoto}" class="card-img-top"
                     style="margin-bottom:  -30px;border-top-left-radius: 5px;border-top-right-radius: 5px;">
-				</div>
 
-                <div class="col-12" id="contenidoCard">
-                    <div class="card-body">
-                        <h1 class="card-title" th:text="${anuncio.titulo}" id="tituloCard"></h1>
+				</div>
+					<div class="col-12" id="contenidoCard">
+     			<div class="card-body">
+                        <h1 class="card-title text-center" th:text="${anuncio.titulo}" id="tituloCard"></h1>
                         <div class="row">
                             <span><i class="fas fa-dollar-sign"
                                     style="font-size: 22px;margin-left: 12px;margin-right: 8px;margin-top: 2px;"></i></span>
                             <h4 class="card-title" th:text="${anuncio.precio}"></h4>
                         </div>
-                    </div>
-
+                  </div>
+            
+    		
                     <p class="card-text" th:text="${anuncio.descripcion}"></p>
 
 
@@ -61,6 +62,7 @@
                                     class="far fa-trash-alt" id="icon-list"></i></a>
                         </div>
                     </div>
+                   
                 </div>
             </div>
 

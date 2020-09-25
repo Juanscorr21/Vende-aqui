@@ -101,7 +101,7 @@
                              <a href="/admin/c"  th:text="#{admin.Categoria}"></a>
                          	</li>
                          	<li>
-                               <a href="/admin/listaSubcategoria" th:text="#{admin.SubCategori}"></a>
+                               <a href="/admin/listaSubcategoria" th:text="#{admin.SubCategoría}"></a>
                             </li>
                      
                     </ul>
@@ -136,10 +136,10 @@
                         <span th:text="#{admin.GestionarCategoria}"></span></a>
                     <ul class="collapse list-unstyled" id="menuCategorias">
                         	<li>
-                               <a th:href="@{/admin/registroCategoria}" th:text="#{registercategory.title}">Agregar Categoria</a>
+                               <a th:href="@{/admin/registroCategoria}" th:text="#{admin.SubTitleAgregarCategoria}">Agregar Categoria</a>
                            </li>
                          	<li>
-                               <a  th:href="@{/admin/registroSubcategoria}" th:text="#{subcategory.title}">Agregar Subcategoria</a>
+                               <a  th:href="@{/admin/registroSubcategoria}" th:text="#{admin.add.subcategorias}">Agregar Subcategoria</a>
                            </li>
                      
                     </ul>
@@ -149,17 +149,17 @@
                 <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">             
                     <a href="#menuPais" data-toggle="collapse" aria-expanded="false">
                  <i class="fas fa-map"></i>
-                        <span th:text="#{admin.titleGestionarPaises}"></span></a>
+                        <span th:text="#{admin.titleGestionarPaíses}"></span></a>
                     <ul class="collapse list-unstyled" id="menuPais">
 							<li >
-                               <a href="/inicioPais" >Agregar Pais</a>
+                               <a href="/inicioPais"   th:text="#{admin.AddPais}">Agregar Pais</a>
                            </li>
                            
                            <li >
-                               <a href="/departamento/iniciodept" >Agregar Departamento</a>
+                               <a href="/departamento/iniciodept" th:text="#{admin.AddDepartamento}">Agregar Departamento</a>
                            </li>
                            <li >
-                               <a href="/inicioMunicipio" >Agregar Municipio</a>
+                               <a href="/inicioMunicipio" th:text="#{admin.addMunicipios}">Agregar Municipio</a>
                            </li>
                      
                     </ul>
@@ -190,10 +190,10 @@
         			</form></a>
              	</li>
                 <li sec:authorize="!isAuthenticated()" style="margin-top: 1rem">
-                    <a href="/signUp" class="btn btn-outline-light">Iniciar Sesion</a>
+                    <a href="/signUp" class="btn btn-outline-light" th:text="#{adduregister.login.Inicio}">Iniciar Sesion</a>
                 </li>
                 <li sec:authorize="!isAuthenticated()">
-                    <a href="/inicioU">Registrarte</a>
+                    <a href="/inicioU" th:text="#{adduregister.title}">Registrarte</a>
                 </li>
             </ul>
         </nav>

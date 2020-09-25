@@ -13,7 +13,7 @@
       <div class="container text-right col-sm-12 col-md-12 col-lg-10 contenedor" style="height: 100%">
 
            <div class="text-center" id="menu">
-                <h2 style="padding-top: 3%;color:#1c89d1;font-size: 50px">Agregar Anuncio
+                <h2 style="padding-top: 3%;color:#1c89d1;font-size: 50px" th:text="#{admin.AgregarAnuncio}">Agregar Anuncio
                 </h2>
                 <hr style="background-color:rgba(39, 144, 170, 0.822); height: 3px; margin-top: 15;margin-bottom: 5%;">
             </div>
@@ -26,7 +26,7 @@
                 <div class="row text-left " style="margin-top: -2%;">
 
                           <div class="col-sm-12  col-md-6 col-lg-7 form-group" id="user-group">
-                              <label for="nombre" style="font-size: 20px;">Titulo </label>
+                              <label for="nombre" style="font-size: 20px;" th:text="#{admin.Titulo}">Titulo </label>
                               <div class="input-group  ">
                                   <div class="input-group-prepend">
                                       <span class="input-group-text" id="icono-categoria"><i
@@ -40,14 +40,14 @@
                       </div>
 
                       <div class="col-sm-12  col-md-6 col-lg-5 form-group" id="user-group">
-                          <label for="nombre" style="font-size: 20px;">Precio: </label>
+                          <label for="nombre" style="font-size: 20px;" th:text="#{admin.Precio}">Precio: </label>
                           <div class="input-group  ">
 
                               <div class="input-group-prepend">
                                   <span class="input-group-text" id="icono-categoria"><i class="fas fa-dollar-sign"></i></span>
                               </div>
-                              <input type="text" class="form-control"  th:field="*{precio}" id="nombreUsuario"
-                                  placeholder="Ingrese Precio" required="true">
+                              <input type="text" class="form-control"  th:field="*{precio}" id="precio"
+                                  th:placeholder="#{admin.placeholder}" required="true">
                           </div>
             				 <div th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
                       </div>                   
@@ -55,7 +55,7 @@
                   
                   <div class="row text-left" style="margin-top: 0%;"  >      
                       <div class="col-sm-12  col-md-6 col-lg-6 form-group" id="user-group">
-                          <label for="nombre" style="font-size: 20px;">Seleccione Subcategoria: </label>
+                          <label for="nombre" style="font-size: 20px;" th:text="#{admin.Subcategoria}">Seleccione Subcategoria: </label>
                           <div class="input-group  ">
                               <div class="input-group-prepend">
                                   <span class="input-group-text" id="icono-categoria"><i class="fas fa-tags"></i></span>
@@ -72,14 +72,14 @@
                   <div class="row text-left" style="margin-top: 0%;">
                       <div class="col-sm-12 col-md-6 col-lg-6 form-group" id="user-group">                            
                           <div class="text-left inputs-bg descripcion" id="user-group">
-                              <label for="nombre" style="font-size: 20px;margin-left: 4%;margin-top: 0%;margin-bottom: 3%;">Descripcion: </label>
-                              <textarea class="form-control "  rows="8" th:field="*{descripcion}" placeholder="Ingrese Descripcion" ></textarea>                
+                              <label for="nombre" style="font-size: 20px;margin-left: 4%;margin-top: 0%;margin-bottom: 3%;" th:text="#{admin.Descripcion}">Descripcion: </label>
+                              <textarea class="form-control "  rows="8" th:field="*{descripcion}"  th:placeholder="#{admin.placeholder}" ></textarea>                
                           </div>
                          <div th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-5 form-group" id="user-group" >                            
                           <div class="text-center inputs-bg descripcion" id="user-group">
-                              <label for="file-upload" class="btn btn-outline-primary" style="padding: -2%;margin-bottom: 3%;"  required="required">Subir Imagen <i class="fas fa-angle-up"></i></label>
+                              <label for="file-upload" class="btn btn-outline-primary" style="padding: -2%;margin-bottom: 3%;"  required="required" th:text="#{admin.btnSubirImg}">Subir Imagen <i class="fas fa-angle-up"></i></label>
                               <input type="file" id="file-upload" accept="imagen/*"   style="display: none" name="file" >                        
                           </div>   
                                               
@@ -93,9 +93,8 @@
                      
 
                   <div class="text-center" id="button" >
-                  <a th:href="@{/user/ListAnuncio}" class="btn btn-danger" id="button-forms"> <i
-                        class="far fa-times-circle"></i> Cancelar</a>
-                      <button	 type="submit" class="btn btn-success ">Agregar  <i class="far fa-check-circle"></i></button>
+                  <a th:href="@{/user/ListAnuncio}" class="btn btn-danger" id="button-forms" th:text="#{subcategory.btnacancel}">  </a>
+                      <button	 type="submit" class="btn btn-success " th:text="#{registercategory.btnadd}">Agregar  </button>
                   </div>
 
                   </div>

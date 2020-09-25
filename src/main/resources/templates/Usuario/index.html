@@ -14,7 +14,7 @@
 	   <nav class="navbar navbar-expand-* " style="background-color:#0098db; height: auto; padding: 0 ;">
 	
 			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" style="color: white;font-size: 17px;margin-left: 1%">
-	    	<i class="fas fa-tags"></i> Categorias
+	    	<i class="fas fa-tags"></i> <span th:text="#{admin.Categoria}"></span> 
 	  	</button>
 		
 		  <div class="collapse navbar-collapse " id="navbarSupportedContent" style="color: white;">
@@ -22,13 +22,9 @@
 			    <ul class="navbar-nav mr-auto">
 			   <div class="row col-12 text-center ">
 			      <li class="nav-item dropdown col-sm-12 col-lg-2" th:each="categoria : ${categorias}">
-			        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${categoria.nombre}" name="categoria" >
+			        <a class="nav-link" href="/findByCategoria" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${categoria.nombre}">
 			          Categorias
 			        </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdown"  >
-			          <a class="dropdown-item" href="#"  >Action</a>
-			     
-			        </div>
 			      </li>
 			     </div>
 			 </ul>
@@ -45,17 +41,17 @@
     <div class="container col col-12 col-lg-10"  th:if="${anuncios.isEmpty()}" style="margin-top:2%;">
         <div class="card container-error" >
             <div class="card-body text-center" >
-                <h2 style="font-size: 50px;color:#0296da;margin: 1%;">No Hay Anuncios Publicados</h2>
+                <h2 style="font-size: 50px;color:#0296da;margin: 1%;"  th:text="#{admin.titulo}">No Hay Anuncios Publicados</h2>
 
                 <div class="text-center">
-                    <a href="/user/anuncio" class="btn btn-outline-success">Publicar Anuncio</a>
+                    <a href="/user/anuncio" class="btn btn-outline-success"  th:text="#{admin.btn}">Publicar Anuncio</a>
                 </div>
             </div>
         </div>
     </div>
     <div th:if="${!anuncios.isEmpty()}">
     
-    <h1 class="text-center" style="background: #7cbc23;color: #ffffff;margin-top: 1%;">Anuncios Publicados</h1>
+    <h1 class="text-center" style="background: #7cbc23;color: #ffffff;margin-top: 1%;" th:text="#{admin.titulo.principal}">Anuncios Publicados</h1>
 	<div th:fragment="anuncios">
     <div class="col-12" style="margin-top: 1%;">
         <div class="card-columns row-cols-1 row-cols-md-1 row-cols-lg-1" >
@@ -93,7 +89,7 @@
     </div>
     
     
-        <footer class="col">
+        <footer class="col" style="padding: 0;margin-top: 5%">
 
             <div class="container-footer-all">
 
@@ -102,7 +98,7 @@
                     <div class="colum1">
                         <h1>Elaborado</h1>
 
-                        <p style="font-size: 18px;">El proyecto VendeAqui fue elaborado con las siguientes Herramientas:
+                        <p style="font-size: 15px;">El proyecto VendeAqui fue elaborado con las siguientes Herramientas:
                             *Java con el framework de Spring Boot(spring-boot-security,spring-boot-starter-web,thymeleaf-extras-springsecurity5,hibernate-validator,spring-boot-devtools,lombok)
                             *Maven
                             *html:5
@@ -116,22 +112,22 @@
 
                     </div>
 
-                    <div class="colum2" style="padding: 0">
+                    <div class="colum2" style="padding: -2px;margin: 0">
 
                         <h1>Realizado Por</h1>
 
-                        <div class="row">
+                        <div class="row col">
                             <label><i class="fas fa-user"></i> Brayan Santago Leal Henao</label>
                         </div>
 
-                        <div class="row">
+                        <div class="row col">
                             <label><i class="fas fa-user"></i> Deiby Lugo Montealegre </label>
                         </div>
-                        <div class="row">
+                        <div class="row col">
                             <label><i class="fas fa-user"></i> Luis Miguel Garcia Toro</label>
                         </div>
 
-                        <div class="row">
+                        <div class="row col">
                             <label><i class="fas fa-user"></i> Juan Pablo Corredor Serrano</label>
                         </div>
 

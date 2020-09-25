@@ -29,7 +29,7 @@ public interface AnuncioRepository extends CrudRepository<Anuncio, Integer> {
 	@Query("SELECT a FROM Anuncio a WHERE a.usuario.dni = :dni")
 	List<Anuncio> findAllByUsuario(@Param("dni")  int dni);
 
-	@Query("SELECT a FROM Anuncio a WHERE a.subCategoria.nombre = :subCategoria")
-	List<Anuncio> findAllAnuncioBySubcategoria(@Param("subCategoria")  String subCategoria);
+	@Query("SELECT a FROM Anuncio a WHERE a.subCategoria.categoria.nombre = :categoria")
+	List<Anuncio> findAllAnuncioBySubcategoria(@Param("categoria")  String categoria);
 	
 }

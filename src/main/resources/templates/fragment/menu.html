@@ -3,7 +3,6 @@
 
  <div class="wrapper " style="padding: 0%;background: " th:switch="${categorias}">
         <!-- Sidebar  -->
-      
         <nav  id="sidebar" >
             <div id="dismiss">
                 <i class="fas fa-arrow-left"></i>
@@ -89,7 +88,7 @@
                 </li>
                 
                 
-                  <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+               <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                 
                 
 
@@ -198,21 +197,19 @@
             </ul>
         </nav>
 
-	        <nav class="navbar  navbar-menu sticky-top" style="background: #ffffff;margin-bottom: 0%;position: inherit;">
-	
-	            <a href="/">
-	                <img src="static/img/logo.png" class="card-img-top" th:src="@{/img/logo.png}" style="width: 200px;">
-	            </a>
-	     	
-			
-	            <button type="button" id="sidebarCollapse" class="btn" >
-	                <span class="fas fa-bars">
-	            </button>
-	         
-	        </nav>
-        <hr style="background-color:#0098db; height: 3px; padding: 0 ;margin: 0" >
-        
-  
+        <nav class="navbar  navbar-menu sticky-top" style="background: #ffffff;margin-bottom: 0%;position: inherit;">
+
+            <a href="/">
+                <img src="static/img/logo.png" class="card-img-top" th:src="@{/img/logo.png}" style="width: 200px;">
+            </a>
+     	 
+		
+            <button type="button" id="sidebarCollapse" class="btn" >
+                <span class="fas fa-bars">
+            </button>
+          	
+        </nav>
+ 		 <hr style="background-color:#0098db; height: 2px; padding: 0 ;margin: 0">
 
     </div>
     

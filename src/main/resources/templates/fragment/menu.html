@@ -182,7 +182,7 @@
             </ul>
 
             <ul class="list-unstyled CTAs"  style="margin-top: 1.8rem">
-           		<li sec:authorize="isAuthenticated()">
+           		<li sec:authorize="isAuthenticated()" style="margin-bottom: 10%">
              		<a href="#" id="cerrar" class="btn btn-outline-light">
                     <form th:action="@{/logout}" method="post">
             			<input type="submit" th:value="#{admin.btnCerrarSesion}" id="botonc"/>

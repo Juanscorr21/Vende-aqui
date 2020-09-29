@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<link rel="icon" type="image/png" href="static/img/logo5.png" th:href="@{/img/007.png}">
+   <div th:replace="fragment/Frames combo :: myheader"></div>
+ 	<link rel="stylesheet" type="text/css" href="static/css/stylesList.css" th:href="@{/css/stylesList.css}">
+</head>
+<body>
+    <div th:insert="fragment/Frames combo  :: menu"></div>
+    <h1 class="text-center" style="background: #0296da;color: #ffffff;margin-top: 1%;"  th:if="${mensajesTodos.isEmpty()}">No Hay Mensajes</h1>
+        
+    <div th:if="${!mensajesTodos.isEmpty()}">
+    <h1 class="text-center" style="background: #0296da;color: #ffffff;margin-top: 1%;" >Mensajes</h1>
+		<div class="card" th:each="mensaje : ${mensajesTodos}" style="margin: 1%">
+		  <div class="card-header" style="background: #3d8baf;color: white;">
+		    Enviado por  : <span th:text="${mensaje.usuarioOrigen}" ></span>
+		  </div>
+		 
+		  <div class="card-body">
+		  
+		    <h5 class="card-title"  th:text="${mensaje.mensaje}"></h5>	
+		       
+		   
+		     <form th:action="@{/reponderMensajes}" method="POST"  style="margin-bottom: 0%;margin-top: 3%">
+			      <div class="row col-12"> 
+			    <div class="col-sm-12 col-lg-11" style="padding: 0;margin: 0">
+			           <textarea class="form-control "  rows="1" name="mensaje" placeholder="Escriba un mensaje Aqui" required="required"></textarea>
+			                 	   
+				</div>
+				<div class="col-sm-12 col-lg-1" style="padding: 0;margin: 0"><button type="submit" class="btn " style="margin: 0;background: #7cbc23;color: white;">Enviar <i class="fas fa-sign-out-alt"></i></button></div>
+				</div>
+			    <textarea  class="form-control "  rows="1" name="destino" th:text="${mensaje.usuarioOrigen}" required="required"  style="padding: 0;margin: 0;visibility: hidden;"></textarea>     
+			</form>
+		  </div>
+		</div>
+		
+ 	</div>
+
+   <div th:insert="fragment/Frames combo :: foot"></div>
+</body>
+
+</html>

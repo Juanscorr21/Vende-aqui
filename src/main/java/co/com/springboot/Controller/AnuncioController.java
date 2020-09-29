@@ -70,7 +70,7 @@ public class AnuncioController {
 	@GetMapping("/anuncioChat/{idAnuncio}")
 			public String anuncioChat(@PathVariable("idAnuncio") int id, Model model) {
 			Anuncio anuncio = anuncioRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid anuncio Id:" + id));
-			List<Anuncio> anuncios =anuncioRepo.findAllAnuncioBySubcategoria(anuncio.getSubCategoria().getNombre());
+			List<Anuncio> anuncios =anuncioRepo.findAllAnuncioBySubcategoria(anuncio.getSubCategoria());
 			model.addAttribute("subcategorias", subCatRepo.findAll() );
 			model.addAttribute("anuncios", anuncios );
 			model.addAttribute("anuncio", anuncio);

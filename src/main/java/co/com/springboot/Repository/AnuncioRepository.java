@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import co.com.springboot.domain.Anuncio;
+import co.com.springboot.domain.Subcategoria;
 import co.com.springboot.domain.Usuario;
 
 
@@ -29,7 +30,7 @@ public interface AnuncioRepository extends CrudRepository<Anuncio, Integer> {
 	@Query("SELECT a FROM Anuncio a WHERE a.usuario.dni = :dni")
 	List<Anuncio> findAllByUsuario(@Param("dni")  int dni);
 
-	@Query("SELECT a FROM Anuncio a WHERE a.subCategoria.categoria.nombre = :categoria")
-	List<Anuncio> findAllAnuncioBySubcategoria(@Param("categoria")  String categoria);
+	@Query("SELECT a FROM Anuncio a WHERE a.subCategoria = :subCategoria")
+	List<Anuncio> findAllAnuncioBySubcategoria(@Param("subCategoria")  Subcategoria subcategoria);
 	
 }

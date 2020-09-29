@@ -87,6 +87,12 @@
                         <span th:text="#{admin.MisAnuncios}"></span></a>
                 </li>
                 
+                 <li sec:authorize="isAuthenticated()" >
+                    <a href="/consultarTodos">
+                        <i class="fas fa-comments"></i>
+                        Mensajes</a>
+                </li>
+                
                 
                <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                 

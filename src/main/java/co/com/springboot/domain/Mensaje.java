@@ -2,6 +2,8 @@ package co.com.springboot.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,13 +25,15 @@ public class Mensaje implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idMensaje;
+	@Column(name = "id_mensaje")
+	private Integer idMensaje;
 	
-	private Date fechaMensaje;
+	@Column(name = "usuario_destino")
+	private String usuarioDestino;
 	
-	private String hora;
+	@Column(name = "usuario_origen")	
+	private String usuarioOrigen;
 	
-	@ManyToOne
-	@JoinColumn(name = "chat_fk")
-	private Chat chat;
+	@Column(name = "mensaje")	
+	private String mensaje;
 }

@@ -73,7 +73,7 @@
                       <div class="col-sm-12 col-md-6 col-lg-6 form-group" id="user-group">                            
                           <div class="text-left inputs-bg descripcion" id="user-group">
                               <label for="nombre" style="font-size: 20px;margin-left: 4%;margin-top: 0%;margin-bottom: 3%;" th:text="#{admin.Descripcion}">Descripcion: </label>
-                              <textarea class="form-control "  rows="8" th:field="*{descripcion}"  th:placeholder="#{admin.placeholder}" ></textarea>                
+                              <textarea class="form-control "  rows="8" th:field="*{descripcion}"  th:placeholder="#{admin.placeholder.descripcion}" ></textarea>                
                           </div>
                          <div th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"  class="alert alert-danger error" role="alert" data-dismiss="alert"  id="x"></div>
                       </div>

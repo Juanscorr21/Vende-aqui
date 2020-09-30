@@ -79,6 +79,12 @@
                        <i class="fas fa-users" style="font-size: 20px"></i> <span th:text="#{listUsers.title}"></span>
                         </a>
                 </li>
+                
+                 <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                    <a href="/admin/ListAnunciosAdmin" >
+                        <i class="fab fa-product-hunt"></i> <span  th:text="#{admin.titulo.principal}"></span>
+                        </a>
+                </li>
               
                 
                 <li sec:authorize="hasAnyAuthority('ROLE_USER')">
@@ -112,7 +118,7 @@
                     </ul>
                 </li>
                 
-                 <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                 <!--  <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
 
                     <a href="#MenuLitasPaises" data-toggle="collapse" aria-expanded="false">
                       <i class="fas fa-clipboard-list"></i>
@@ -129,7 +135,7 @@
                             </li>
                      
                     </ul>
-                </li>
+                </li>-->
                 
                 
                 <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
@@ -151,7 +157,7 @@
                 </li>
                 
 
-                <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">             
+                <!--  <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')">             
                     <a href="#menuPais" data-toggle="collapse" aria-expanded="false">
                  <i class="fas fa-map"></i>
                         <span th:text="#{admin.titleGestionarPaíses}"></span></a>
@@ -168,7 +174,7 @@
                            </li>
                      
                     </ul>
-                </li>
+                </li>-->
               
                 <li>
                     <div class="row">

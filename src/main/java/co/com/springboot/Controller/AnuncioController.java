@@ -92,6 +92,13 @@ public class AnuncioController {
 	  	  model.addAttribute("usuarios", usuarioRepo.findAll() );
 	      return "Anuncio/indexAnuncio";
 	  }
+	@GetMapping("/admin/ListAnunciosAdmin")
+	   public String ListAnunciosAdmin(Model model ) {
+
+	      model.addAttribute("anunciosAdmin", anuncioRepo.findAll() );
+
+	      return "Anuncio/listaAnuncios";
+	  }
 	
 	@PostMapping("/user/agregaranuncio")
 	  public String agregarAnuncio(@Valid Anuncio anuncio, BindingResult resultado, Model model,@RequestParam("file") MultipartFile file,Principal principal) {

@@ -22,9 +22,10 @@
 			    <ul class="navbar-nav mr-auto">
 			   <div class="row col-12 text-center ">
 			      <li class="nav-item dropdown col-sm-12 col-lg-2" th:each="categoria : ${categorias}">
-			        <a class="nav-link" href="/findByCategoria" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${categoria.nombre}">
+			        <a class="nav-link" href="/findByCategoria" id="navbarDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" th:text="${categoria.nombre}">
 			          Categorias
 			        </a>
+					
 			      </li>
 			     </div>
 			 </ul>

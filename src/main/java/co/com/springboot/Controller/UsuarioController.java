@@ -124,7 +124,7 @@ public class UsuarioController {
 	    public String editU(@PathVariable("dni") int dni, Model model) {
 		 Usuario usuario = userRepo.findById(dni).orElseThrow(() -> new IllegalArgumentException("Id: " + dni + " del usuario es invalido"));
 	        model.addAttribute("usuario", usuario);
-	        model.addAttribute("formulario", "active");
+
 	        return "Usuario/updateU";
 	    }
 	 
